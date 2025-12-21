@@ -1,0 +1,127 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="VSPatchGen.Gui.MainWindow"
+        Width="860" Height="480"
+        Title="Vintage Story Patch Generator">
+
+	<Grid Margin="16"
+		  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*,Auto"
+		  ColumnDefinitions="*,Auto">
+
+		<!-- Header row: text + help button -->
+		<Grid Grid.Row="0" Grid.ColumnSpan="2" ColumnDefinitions="*,Auto" VerticalAlignment="Center">
+			<TextBlock Grid.Column="0"
+					   Text="Pick an original JSON and an edited JSON, then generate a Vintage Story patch file."
+					   Opacity="0.85" />
+
+			<Button Grid.Column="1"
+					Width="32" Height="32"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					FontWeight="Bold"
+					FontSize="14"
+					Content="?"
+					ToolTip.Tip="Help: what to pick and why"
+					Click="Help_Click"/>
+		</Grid>
+
+		<!-- Source -->
+		<StackPanel Grid.Row="1" Grid.Column="0" Margin="0,12,12,0">
+			<TextBlock Text="Source JSON (original)" />
+			<TextBox Name="SourceBox"
+					 Watermark=".../assets/modid/.../file.json"
+					 ToolTip.Tip="Pick the original asset JSON from the mod you are patching."/>
+		</StackPanel>
+		<Button Grid.Row="1" Grid.Column="1" Margin="0,32,0,0" Width="110"
+				Content="Browse..." Click="BrowseSource_Click"/>
+
+		<!-- Edited -->
+		<StackPanel Grid.Row="2" Grid.Column="0" Margin="0,12,12,0">
+			<TextBlock Text="Edited JSON (your changes)" />
+			<TextBox Name="EditedBox"
+					 Watermark="Edited file"
+					 ToolTip.Tip="Your modified JSON. Comments are OK; they won't be preserved in output."/>
+		</StackPanel>
+		<Button Grid.Row="2" Grid.Column="1" Margin="0,32,0,0" Width="110"
+				Content="Browse..." Click="BrowseEdited_Click"/>
+
+		<!-- Output -->
+		<StackPanel Grid.Row="3" Grid.Column="0" Margin="0,12,12,0">
+			<TextBlock Text="Output patch file (set before generating patch)" />
+			<TextBox Name="OutBox"
+					 Watermark=".../assets/yourpatch/patches/something.json"
+					 ToolTip.Tip="Where to save the generated patch JSON."/>
+		</StackPanel>
+		<Button Grid.Row="3" Grid.Column="1" Margin="0,32,0,0" Width="110"
+				Content="Save as..." Click="BrowseOut_Click"/>
+
+		<!-- Options: wrap so it never crowds the Generate button -->
+		<WrapPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0,14,0,0"
+				   Orientation="Horizontal"
+				   VerticalAlignment="Top"
+				   HorizontalAlignment="Left">
+
+			<StackPanel Width="220" Margin="0,0,16,0">
+				<TextBlock Text="Side" />
+				<ComboBox Name="SideCombo" SelectedIndex="0"
+						  ToolTip.Tip="Server = gameplay/recipes/worldgen/traders. Client = shapes/animations. Both = omit side.">
+					<ComboBoxItem Content="Server" />
+					<ComboBoxItem Content="Client" />
+					<ComboBoxItem Content="Both" />
+				</ComboBox>
+			</StackPanel>
+
+			<StackPanel Width="300" Margin="0,0,16,0">
+				<TextBlock Text="Array mode" />
+				<ComboBox Name="ArrayCombo" SelectedIndex="0"
+						  ToolTip.Tip="Replace whole arrays is safest but can conflict. Index-by-index is more compatible but can break if others reorder arrays.">
+					<ComboBoxItem Content="Replace whole arrays (safe)" />
+					<ComboBoxItem Content="Index-by-index (more granular)" />
+				</ComboBox>
+			</StackPanel>
+
+			<StackPanel MinWidth="260" Margin="0,0,0,0" VerticalAlignment="Bottom" Spacing="6">
+				<CheckBox Name="AutoDependsCheck" IsChecked="True"
+						  Content="Auto dependsOn from file domain"
+						  ToolTip.Tip="Adds dependsOn to require the target mod (domain) to be loaded." />
+
+				<CheckBox Name="PreferAddMergeCheck" IsChecked="True"
+						  Content="Prefer addmerge (compat)"
+						  ToolTip.Tip="Uses addmerge instead of add when creating keys/sections. Safer when other mods or updates already add arrays/objects."/>
+			</StackPanel>
+
+		</WrapPanel>
+
+
+		<!-- Generate button: own row with breathing room -->
+		<Border Grid.Row="5" Grid.ColumnSpan="2" Margin="0,18,0,0">
+			<Button Height="48"
+					MinWidth="280"
+					HorizontalAlignment="Center"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					FontSize="16"
+					FontWeight="SemiBold"
+					Padding="22,10"
+					Classes="accent"
+					Content="Generate Patch"
+					Click="Generate_Click"/>
+		</Border>
+
+		<!-- Status bar -->
+		<Border Grid.Row="7" Grid.ColumnSpan="2" Margin="0,14,0,0"
+				Padding="12"
+				Background="#151515"
+				BorderBrush="#2A2A2A"
+				BorderThickness="1"
+				CornerRadius="10">
+			<TextBlock Name="StatusText"
+					   Text="Ready."
+					   Foreground="#FFFFFF"
+					   Opacity="0.92"
+					   FontSize="13"
+					   TextWrapping="Wrap"/>
+		</Border>
+
+	</Grid>
+</Window>
