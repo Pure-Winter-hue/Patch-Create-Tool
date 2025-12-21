@@ -14,6 +14,54 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+
+        // Ensure the status text is correct even if the window was created before localization.
+        StatusText.Text = Localization.T("StatusReady");
+
+        // Default behavior: infer file id from the source path.
+        UpdateFileIdFromSource();
+    }
+
+    private void SourceBox_TextChanged(object? sender, Avalonia.Controls.TextChangedEventArgs e)
+    {
+        // If the user pastes/edits the path manually, keep the inferred file id in sync.
+        UpdateFileIdFromSource();
+    }
+
+    private void InferFileIdCheck_Changed(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var infer = InferFileIdCheck.IsChecked == true;
+
+        // In infer mode, the file id box is read-only and shows what we detected.
+        // In manual mode, it becomes editable so the user can type domain:path.
+        FileIdBox.IsReadOnly = infer;
+
+        if (infer)
+        {
+            UpdateFileIdFromSource();
+        }
+        else
+        {
+            // If the user switches to manual, keep whatever was inferred as a helpful starting point.
+            // (If we can't infer, the box will be blank and they'll need to fill it in.)
+        }
+    }
+
+    private void UpdateFileIdFromSource()
+    {
+        if (InferFileIdCheck?.IsChecked != true) return;
+
+        var source = SourceBox?.Text?.Trim();
+        if (string.IsNullOrWhiteSpace(source) || !File.Exists(source))
+        {
+            FileIdBox.Text = "";
+            return;
+        }
+
+        if (VsFileId.TryInferFileId(source, out var fileId))
+            FileIdBox.Text = fileId;
+        else
+            FileIdBox.Text = "";
     }
 
     private async void BrowseSource_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -22,6 +70,8 @@ public partial class MainWindow : Window
         if (file is null) return;
 
         SourceBox.Text = file;
+
+        UpdateFileIdFromSource();
 
         if (string.IsNullOrWhiteSpace(OutBox.Text))
         {
@@ -48,21 +98,31 @@ public partial class MainWindow : Window
     {
         try
         {
-            StatusText.Text = "Generating...";
+            StatusText.Text = Localization.T("StatusGenerating");
 
             var source = SourceBox.Text?.Trim();
             var edited = EditedBox.Text?.Trim();
             var outPath = OutBox.Text?.Trim();
 
             if (string.IsNullOrWhiteSpace(source) || !File.Exists(source))
-                throw new InvalidOperationException("Pick a valid Source JSON file.");
+                throw new InvalidOperationException(Localization.T("ErrPickValidSource"));
             if (string.IsNullOrWhiteSpace(edited) || !File.Exists(edited))
-                throw new InvalidOperationException("Pick a valid Edited JSON file.");
+                throw new InvalidOperationException(Localization.T("ErrPickValidEdited"));
             if (string.IsNullOrWhiteSpace(outPath))
-                throw new InvalidOperationException("Pick an output file path.");
+                throw new InvalidOperationException(Localization.T("ErrPickOutput"));
 
-            if (!VsFileId.TryInferFileId(source, out var fileId))
-                throw new InvalidOperationException("Could not infer target file id. Make sure Source is inside .../assets/<modid>/...");
+            string fileId;
+            if (InferFileIdCheck.IsChecked == true)
+            {
+                if (!VsFileId.TryInferFileId(source, out fileId))
+                    throw new InvalidOperationException(Localization.T("ErrInferFileId"));
+            }
+            else
+            {
+                fileId = FileIdBox.Text?.Trim() ?? "";
+                if (string.IsNullOrWhiteSpace(fileId) || VsFileId.GetDomain(fileId) is null)
+                    throw new InvalidOperationException(Localization.T("ErrPickValidFileId"));
+            }
 
             var side = SideCombo.SelectedIndex switch
             {
@@ -71,7 +131,7 @@ public partial class MainWindow : Window
                 _ => null // both => omit side
             };
 
-            var arrayMode = ArrayCombo.SelectedIndex == 1
+            var arrayMode = ArrayCombo.SelectedIndex == 0
                 ? ArrayDiffMode.IndexByIndex
                 : ArrayDiffMode.ReplaceWhole;
 
@@ -108,35 +168,25 @@ public partial class MainWindow : Window
                 return (fileId, ops.Count);
             });
 
-            StatusText.Text = $"Done. Wrote {result.Count} patch op(s).\nTarget file: {result.fileId}\nOutput: {outPath}";
+            StatusText.Text = string.Format(
+                Localization.T("StatusDoneFormat"),
+                result.Count,
+                result.fileId,
+                outPath);
         }
         catch (Exception ex)
         {
-            StatusText.Text = "Error: " + ex.Message;
+            StatusText.Text = Localization.T("ErrorPrefix") + ex.Message;
         }
     }
 
     private async void Help_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        // Keep this short and super practical.
-        var text =
-@"SIDE
-• Server: gameplay data (recipes/worldgen/traders/most stats). Avoids client warnings for server-only assets.
-• Client: visuals (shapes/animations).
-• Both: omit side (default). Use when both sides should patch.
-
-ARRAY MODE (how THIS TOOL writes patches)
-• Replace whole arrays: safest output, but more likely to conflict (overwrites the whole list).
-• Index-by-index: better for 'add a few entries' (like trader stock), but can break if other mods reorder the same list.
-
-PREFER ADDMERGE (compat)
-• Uses addmerge instead of add when creating keys/sections.
-• If the target already exists and is an array/object, addmerge appends/merges instead of replacing.
-• Best for mod compatibility when multiple mods touch the same list.";
+        var text = Localization.T("HelpText");
 
         var win = new Window
         {
-            Title = "Help",
+            Title = Localization.T("HelpTitle"),
             Width = 700,
             Height = 440,
             Content = new ScrollViewer
@@ -153,11 +203,43 @@ PREFER ADDMERGE (compat)
         await win.ShowDialog(this);
     }
 
+    private void Language_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        // Build a context menu of languages.
+        var langs = VsLanguageDiscovery.GetLanguagesForMenu();
+
+        var menu = new ContextMenu();
+
+        var items = new List<MenuItem>();
+        foreach (var lang in langs.OrderBy(l => l.DisplayName, StringComparer.CurrentCultureIgnoreCase))
+        {
+            var isActive = string.Equals(lang.Code, Localization.CurrentLanguage, StringComparison.OrdinalIgnoreCase);
+            var mi = new MenuItem
+            {
+                Header = isActive ? $"✓ {lang.DisplayName}" : lang.DisplayName,
+                Tag = lang.Code
+            };
+
+            mi.Click += (_, _) =>
+            {
+                Localization.Load((string)mi.Tag!);
+                // FlowDirection is applied by Localization.Load.
+            };
+
+            items.Add(mi);
+        }
+
+        menu.Items.Clear();
+        foreach (var it in items)
+            menu.Items.Add(it);
+        menu.Open(LanguageButton);
+    }
+
     private async Task<string?> PickOpenJsonAsync()
     {
         var files = await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
-            Title = "Select JSON file",
+            Title = Localization.T("DialogSelectJsonTitle"),
             AllowMultiple = false,
             FileTypeFilter = new[]
             {
@@ -173,7 +255,7 @@ PREFER ADDMERGE (compat)
     {
         var file = await StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
         {
-            Title = "Save patch JSON",
+            Title = Localization.T("DialogSavePatchTitle"),
             SuggestedFileName = "patches.json",
             DefaultExtension = "json",
             FileTypeChoices = new[]
