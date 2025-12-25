@@ -20,8 +20,8 @@
   "SideBoth": "Ambaŭ",
   "ArrayModeLabel": "Array-reĝimo",
   "ArrayModeTooltip": "Kiel trakti JSON-array-ojn dum generado de operacioj.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Anstataŭigi tutajn tabelojn",
+  "ArrayModeIndex": "Indekso post indekso",
   "TargetFileIdLabel": "Cela dosier-id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Tio fariĝas la 'file' kampo de la fliko, ekzemple game:path/to/file.json aŭ yourmod:path/to/file.json.\n\nSe “Infer from source path” estas ebligita, tio estas plenigita aŭtomate laŭ dosierujo assets/<domain>/... en la fonta vojo.",
@@ -45,5 +45,7 @@
   "HelpText": "Flika flanko\n• Servilo: la fliko rulas nur ĉe la servilo.\n• Kliento: la fliko rulas nur ĉe la kliento.\n• Ambaŭ: neniu side estas skribita, do la fliko aplikiĝas ĉie.\n\nArray-reĝimo\n• Index-by-index: komparas array-ojn elemento post elemento. Plej kongrua, speciale kun “Preferi addmerge” ebligita. Bonega kiam aliaj modoj ankaŭ povus fliki la saman dosieron.\n• Replace whole arrays: anstataŭigas la tutan array-on kiam ĝi ŝanĝiĝas. Utila kiam la array-o estas esence “via” (via propra modenhavo aŭ io malverŝajne flikita de aliaj).",
   "LanguageTooltip": "Ŝanĝi lingvon",
   "DialogSelectJsonTitle": "Elekti JSON-dosieron",
-  "DialogSavePatchTitle": "Konservi flikdosieron"
+  "DialogSavePatchTitle": "Konservi flikdosieron",
+  "FolderCompareLabel": "Kompari dosierujojn (rekursive)",
+  "FolderCompareTooltip": "Komparas du dosierujojn kun JSON-dosieroj kaj skribas nur la ŝanĝitajn flikdosierojn en la elig-dosierujon."
 }

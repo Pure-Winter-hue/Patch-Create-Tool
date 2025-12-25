@@ -20,8 +20,8 @@
   "SideBoth": "Beide",
   "ArrayModeLabel": "Array-modus",
   "ArrayModeTooltip": "Hoe JSON-arrays worden behandeld bij het genereren van operaties.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Hele arrays vervangen",
+  "ArrayModeIndex": "Index-voor-index",
   "TargetFileIdLabel": "Doelbestand-id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Dit wordt het patchveld 'file', zoals game:path/to/file.json of yourmod:path/to/file.json.\n\nAls “Afleiden uit bronpad” is ingeschakeld, wordt dit automatisch ingevuld op basis van een map assets/<domain>/... in het bronpad.",
@@ -45,5 +45,7 @@
   "HelpText": "Patch-zijde\n• Server: patch draait alleen op de server.\n• Client: patch draait alleen op de client.\n• Beide: er wordt geen side geschreven, dus de patch geldt overal.\n\nArray-modus\n• Index-by-index: vergelijkt arrays element voor element. Het meest compatibel, vooral met “addmerge verkiezen” ingeschakeld. Handig als andere mods hetzelfde bestand ook kunnen patchen.\n• Replace whole arrays: vervangt de hele array zodra die verandert. Handig wanneer de array in feite “van jou” is (eigen mod-inhoud of iets wat anderen waarschijnlijk niet patchen).",
   "LanguageTooltip": "Taal wijzigen",
   "DialogSelectJsonTitle": "JSON-bestand selecteren",
-  "DialogSavePatchTitle": "Patchbestand opslaan"
+  "DialogSavePatchTitle": "Patchbestand opslaan",
+  "FolderCompareLabel": "Map vergelijken (recursief)",
+  "FolderCompareTooltip": "Vergelijkt twee mappen met JSON-bestanden en schrijft alleen de gewijzigde patchbestanden naar de uitvoermap."
 }

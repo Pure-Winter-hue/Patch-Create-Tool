@@ -20,8 +20,8 @@
   "SideBoth": "両方",
   "ArrayModeLabel": "配列モード",
   "ArrayModeTooltip": "操作を生成するときにJSON配列をどう扱うか。",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "配列全体を置き換え",
+  "ArrayModeIndex": "インデックスごと",
   "TargetFileIdLabel": "対象ファイルID",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "パッチの 'file' フィールドになります（例: game:path/to/file.json / yourmod:path/to/file.json）。\n\n「ソースパスから推測」が有効な場合、ソースパス内の assets/<domain>/... フォルダを基に自動入力されます。",
@@ -45,5 +45,7 @@
   "HelpText": "パッチ側\n• サーバー: パッチはサーバーのみで実行されます。\n• クライアント: パッチはクライアントのみで実行されます。\n• 両方: side を書かないため、どこでも適用されます。\n\n配列モード\n• Index-by-index: 配列を要素ごとに比較します。最も互換性が高く、特に「addmerge を優先」が有効なときに効果的です。他のModも同じファイルをパッチする可能性がある場合に最適です。\n• Replace whole arrays: 変更があるたびに配列全体を置き換えます。配列がほぼ「自分のもの」（自分のMod内容、または他者がまず触れない内容）のときに便利です。",
   "LanguageTooltip": "言語を変更",
   "DialogSelectJsonTitle": "JSONファイルを選択",
-  "DialogSavePatchTitle": "パッチファイルを保存"
+  "DialogSavePatchTitle": "パッチファイルを保存",
+  "FolderCompareLabel": "フォルダー比較（再帰）",
+  "FolderCompareTooltip": "JSONファイルの2つのフォルダーを比較し、変更されたパッチのみを出力フォルダーに書き込みます。"
 }

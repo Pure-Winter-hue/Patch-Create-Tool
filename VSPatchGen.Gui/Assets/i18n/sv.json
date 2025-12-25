@@ -20,8 +20,8 @@
   "SideBoth": "Båda",
   "ArrayModeLabel": "Array-läge",
   "ArrayModeTooltip": "Hur JSON-arrayer ska hanteras när operationer skapas.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Ersätt hela arrayer",
+  "ArrayModeIndex": "Index för index",
   "TargetFileIdLabel": "Målfil-id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Detta blir patchens 'file'-fält, t.ex. game:path/to/file.json eller yourmod:path/to/file.json.\n\nOm “Härled från källsökväg” är aktiverat fylls detta i automatiskt baserat på en assets/<domain>/... mapp i källsökvägen.",
@@ -45,5 +45,7 @@
   "HelpText": "Patch-sida\n• Server: patchen körs bara på servern.\n• Klient: patchen körs bara på klienten.\n• Båda: ingen side skrivs, så patchen gäller överallt.\n\nArray-läge\n• Index-by-index: jämför arrayer element för element. Mest kompatibelt, särskilt med “Föredra addmerge” aktiverat. Bra om andra mods också kan patcha samma fil.\n• Replace whole arrays: ersätter hela arrayen när den ändras. Användbart när arrayen i princip är “din” (eget moddinnehåll eller något som andra knappast patchar).",
   "LanguageTooltip": "Byt språk",
   "DialogSelectJsonTitle": "Välj JSON-fil",
-  "DialogSavePatchTitle": "Spara patchfil"
+  "DialogSavePatchTitle": "Spara patchfil",
+  "FolderCompareLabel": "Jämför mappar (rekursivt)",
+  "FolderCompareTooltip": "Jämför två mappar med JSON-filer och skriver bara de ändrade patchfilerna till utdatamappen."
 }

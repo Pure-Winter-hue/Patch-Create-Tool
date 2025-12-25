@@ -20,8 +20,8 @@
   "SideBoth": "Mindkettő",
   "ArrayModeLabel": "Tömb mód",
   "ArrayModeTooltip": "Hogyan kezelje a JSON tömböket az operációk generálásakor.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Teljes tömbök cseréje",
+  "ArrayModeIndex": "Indexről indexre",
   "TargetFileIdLabel": "Cél fájl-id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Ez lesz a patch 'file' mezője, pl. game:path/to/file.json vagy yourmod:path/to/file.json.\n\nHa a „Következtetés a forrás útvonalból” be van kapcsolva, automatikusan kitöltődik a forrás útvonalában található assets/<domain>/... mappa alapján.",
@@ -45,5 +45,7 @@
   "HelpText": "Patch oldal\n• Szerver: a patch csak a szerveren fut.\n• Kliens: a patch csak a kliensen fut.\n• Mindkettő: nem írunk side mezőt, így a patch mindenhol érvényes.\n\nTömb mód\n• Index-by-index: a tömböket elemről elemre hasonlítja. A legkompatibilisebb, különösen ha az „addmerge előnyben” be van kapcsolva. Jó, ha más modok is patcholhatják ugyanazt a fájlt.\n• Replace whole arrays: a teljes tömböt lecseréli, valahányszor változik. Hasznos, ha a tömb lényegében “a tied” (a saját mod tartalmad vagy valami, amit mások valószínűleg nem patcholnak).",
   "LanguageTooltip": "Nyelv váltása",
   "DialogSelectJsonTitle": "JSON fájl kiválasztása",
-  "DialogSavePatchTitle": "Patch fájl mentése"
+  "DialogSavePatchTitle": "Patch fájl mentése",
+  "FolderCompareLabel": "Mappák összehasonlítása (rekurzív)",
+  "FolderCompareTooltip": "Két JSON-fájlokat tartalmazó mappát hasonlít össze, és csak a megváltozott patch fájlokat írja a kimeneti mappába."
 }

@@ -20,12 +20,34 @@ public partial class MainWindow : Window
 
         // Default behavior: infer file id from the source path.
         UpdateFileIdFromSource();
+
     }
+
+    private bool IsFolderMode => FolderCompareCheck?.IsChecked == true;
 
     private void SourceBox_TextChanged(object? sender, Avalonia.Controls.TextChangedEventArgs e)
     {
         // If the user pastes/edits the path manually, keep the inferred file id in sync.
         UpdateFileIdFromSource();
+
+    }
+
+    private void FolderCompareCheck_Changed(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        // Folder mode uses per-file inference, so the single-file id UI is not applicable.
+        var folder = IsFolderMode;
+
+        FileIdBox.IsEnabled = !folder;
+        InferFileIdCheck.IsEnabled = !folder;
+
+        if (folder)
+        {
+            FileIdBox.Text = "";
+        }
+        else
+        {
+            UpdateFileIdFromSource();
+        }
     }
 
     private void InferFileIdCheck_Changed(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -49,6 +71,12 @@ public partial class MainWindow : Window
 
     private void UpdateFileIdFromSource()
     {
+        if (IsFolderMode)
+        {
+            FileIdBox.Text = "";
+            return;
+        }
+
         if (InferFileIdCheck?.IsChecked != true) return;
 
         var source = SourceBox?.Text?.Trim();
@@ -66,32 +94,62 @@ public partial class MainWindow : Window
 
     private async void BrowseSource_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var file = await PickOpenJsonAsync();
-        if (file is null) return;
-
-        SourceBox.Text = file;
-
-        UpdateFileIdFromSource();
-
-        if (string.IsNullOrWhiteSpace(OutBox.Text))
+        if (IsFolderMode)
         {
-            var name = Path.GetFileNameWithoutExtension(file);
-            OutBox.Text = Path.Combine(Path.GetDirectoryName(file) ?? "", $"{name}.patches.json");
+            var folder = await PickOpenFolderAsync(Localization.T("DialogSelectJsonTitle"));
+            if (folder is null) return;
+
+            SourceBox.Text = folder;
+            if (string.IsNullOrWhiteSpace(OutBox.Text))
+                OutBox.Text = Path.Combine(folder, "patches_out");
+        }
+        else
+        {
+            var file = await PickOpenJsonAsync();
+            if (file is null) return;
+
+            SourceBox.Text = file;
+
+            UpdateFileIdFromSource();
+
+            if (string.IsNullOrWhiteSpace(OutBox.Text))
+            {
+                var name = Path.GetFileNameWithoutExtension(file);
+                OutBox.Text = Path.Combine(Path.GetDirectoryName(file) ?? "", $"{name}.patches.json");
+            }
         }
     }
 
     private async void BrowseEdited_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var file = await PickOpenJsonAsync();
-        if (file is null) return;
-        EditedBox.Text = file;
+        if (IsFolderMode)
+        {
+            var folder = await PickOpenFolderAsync(Localization.T("DialogSelectJsonTitle"));
+            if (folder is null) return;
+            EditedBox.Text = folder;
+        }
+        else
+        {
+            var file = await PickOpenJsonAsync();
+            if (file is null) return;
+            EditedBox.Text = file;
+        }
     }
 
     private async void BrowseOut_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var file = await PickSaveJsonAsync();
-        if (file is null) return;
-        OutBox.Text = file;
+        if (IsFolderMode)
+        {
+            var folder = await PickOpenFolderAsync(Localization.T("DialogSavePatchTitle"));
+            if (folder is null) return;
+            OutBox.Text = folder;
+        }
+        else
+        {
+            var file = await PickSaveJsonAsync();
+            if (file is null) return;
+            OutBox.Text = file;
+        }
     }
 
     private async void Generate_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -104,25 +162,8 @@ public partial class MainWindow : Window
             var edited = EditedBox.Text?.Trim();
             var outPath = OutBox.Text?.Trim();
 
-            if (string.IsNullOrWhiteSpace(source) || !File.Exists(source))
-                throw new InvalidOperationException(Localization.T("ErrPickValidSource"));
-            if (string.IsNullOrWhiteSpace(edited) || !File.Exists(edited))
-                throw new InvalidOperationException(Localization.T("ErrPickValidEdited"));
             if (string.IsNullOrWhiteSpace(outPath))
                 throw new InvalidOperationException(Localization.T("ErrPickOutput"));
-
-            string fileId;
-            if (InferFileIdCheck.IsChecked == true)
-            {
-                if (!VsFileId.TryInferFileId(source, out fileId))
-                    throw new InvalidOperationException(Localization.T("ErrInferFileId"));
-            }
-            else
-            {
-                fileId = FileIdBox.Text?.Trim() ?? "";
-                if (string.IsNullOrWhiteSpace(fileId) || VsFileId.GetDomain(fileId) is null)
-                    throw new InvalidOperationException(Localization.T("ErrPickValidFileId"));
-            }
 
             var side = SideCombo.SelectedIndex switch
             {
@@ -137,42 +178,97 @@ public partial class MainWindow : Window
 
             var preferAddMerge = PreferAddMergeCheck.IsChecked == true;
 
-            List<DependsOnEntry>? dependsOn = null;
-            if (AutoDependsCheck.IsChecked == true)
+            var autoDepends = AutoDependsCheck.IsChecked == true;
+
+            if (IsFolderMode)
             {
-                var dom = VsFileId.GetDomain(fileId);
-                if (!string.IsNullOrWhiteSpace(dom) && !dom.Equals("game", StringComparison.OrdinalIgnoreCase))
+                if (string.IsNullOrWhiteSpace(source) || !Directory.Exists(source))
+                    throw new InvalidOperationException(Localization.T("ErrPickValidSource"));
+                if (string.IsNullOrWhiteSpace(edited) || !Directory.Exists(edited))
+                    throw new InvalidOperationException(Localization.T("ErrPickValidEdited"));
+
+                // If user picked a file path by accident, treat it as "use its directory".
+                if (outPath.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                    outPath = Path.GetDirectoryName(outPath) ?? outPath;
+
+                var folderResult = await Task.Run(() =>
                 {
-                    dependsOn = new List<DependsOnEntry> { new() { ModId = dom } };
-                }
+                    return FolderPatchGenerator.GenerateFolder(
+                        source,
+                        edited,
+                        outPath,
+                        new PatchGeneratorOptions
+                        {
+                            ArrayMode = arrayMode,
+                            Side = side,
+                            PreferAddMerge = preferAddMerge
+                        },
+                        autoDepends);
+                });
+
+                var errNote = folderResult.Errors.Count > 0
+                    ? $"  ({folderResult.Errors.Count} errors)"
+                    : "";
+
+                StatusText.Text = $"Wrote {folderResult.PatchesWritten} patch file(s) ({folderResult.TotalOpsWritten} ops) to: {outPath}{errNote}";
             }
-
-            var result = await Task.Run(() =>
+            else
             {
-                var origTok = Json5ish.LoadFile(source);
-                var editTok = Json5ish.LoadFile(edited);
+                if (string.IsNullOrWhiteSpace(source) || !File.Exists(source))
+                    throw new InvalidOperationException(Localization.T("ErrPickValidSource"));
+                if (string.IsNullOrWhiteSpace(edited) || !File.Exists(edited))
+                    throw new InvalidOperationException(Localization.T("ErrPickValidEdited"));
 
-                var ops = PatchGenerator.Generate(
-                    origTok,
-                    editTok,
-                    fileId,
-                    new PatchGeneratorOptions
+                string fileId;
+                if (InferFileIdCheck.IsChecked == true)
+                {
+                    if (!VsFileId.TryInferFileId(source, out fileId))
+                        throw new InvalidOperationException(Localization.T("ErrInferFileId"));
+                }
+                else
+                {
+                    fileId = FileIdBox.Text?.Trim() ?? "";
+                    if (string.IsNullOrWhiteSpace(fileId) || VsFileId.GetDomain(fileId) is null)
+                        throw new InvalidOperationException(Localization.T("ErrPickValidFileId"));
+                }
+
+                List<DependsOnEntry>? dependsOn = null;
+                if (autoDepends)
+                {
+                    var dom = VsFileId.GetDomain(fileId);
+                    if (!string.IsNullOrWhiteSpace(dom) && !dom.Equals("game", StringComparison.OrdinalIgnoreCase))
                     {
-                        ArrayMode = arrayMode,
-                        Side = side,
-                        PreferAddMerge = preferAddMerge
-                    },
-                    dependsOn);
+                        dependsOn = new List<DependsOnEntry> { new() { ModId = dom } };
+                    }
+                }
 
-                PatchFileWriter.Write(outPath, ops);
-                return (fileId, ops.Count);
-            });
+                var result = await Task.Run(() =>
+                {
+                    var origTok = Json5ish.LoadFile(source);
+                    var editTok = Json5ish.LoadFile(edited);
 
-            StatusText.Text = string.Format(
-                Localization.T("StatusDoneFormat"),
-                result.Count,
-                result.fileId,
-                outPath);
+                    var ops = PatchGenerator.Generate(
+                        origTok,
+                        editTok,
+                        fileId,
+                        new PatchGeneratorOptions
+                        {
+                            ArrayMode = arrayMode,
+                            Side = side,
+                            PreferAddMerge = preferAddMerge
+                        },
+                        dependsOn);
+
+                    PatchFileWriter.Write(outPath, ops);
+                    return (fileId, ops.Count);
+                });
+
+                StatusText.Text = string.Format(
+                    Localization.T("StatusDoneFormat"),
+                    result.Count,
+                    result.fileId,
+                    outPath);
+            }
         }
         catch (Exception ex)
         {
@@ -224,6 +320,7 @@ public partial class MainWindow : Window
             {
                 Localization.Load((string)mi.Tag!);
                 // FlowDirection is applied by Localization.Load.
+                RefreshLocalizedComboSelection();
             };
 
             items.Add(mi);
@@ -233,6 +330,20 @@ public partial class MainWindow : Window
         foreach (var it in items)
             menu.Items.Add(it);
         menu.Open(LanguageButton);
+    }
+
+    private void RefreshLocalizedComboSelection()
+    {
+        RefreshComboSelection(SideCombo);
+        RefreshComboSelection(ArrayCombo);
+    }
+
+    private static void RefreshComboSelection(ComboBox? combo)
+    {
+        if (combo is null) return;
+        var idx = combo.SelectedIndex;
+        combo.SelectedIndex = -1;
+        combo.SelectedIndex = idx;
     }
 
     private async Task<string?> PickOpenJsonAsync()
@@ -249,6 +360,17 @@ public partial class MainWindow : Window
         });
 
         return files.FirstOrDefault()?.TryGetLocalPath();
+    }
+
+    private async Task<string?> PickOpenFolderAsync(string title)
+    {
+        var folders = await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
+        {
+            Title = title,
+            AllowMultiple = false
+        });
+
+        return folders.FirstOrDefault()?.TryGetLocalPath();
     }
 
     private async Task<string?> PickSaveJsonAsync()

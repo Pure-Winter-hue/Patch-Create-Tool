@@ -20,8 +20,8 @@
   "SideBoth": "Και τα δύο",
   "ArrayModeLabel": "Λειτουργία array",
   "ArrayModeTooltip": "Πώς να χειριστείτε τα JSON arrays κατά τη δημιουργία λειτουργιών.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Αντικατάσταση ολόκληρων πινάκων",
+  "ArrayModeIndex": "Δείκτης προς δείκτη",
   "TargetFileIdLabel": "ID αρχείου στόχου",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Αυτό γίνεται το πεδίο 'file' του patch, π.χ. game:path/to/file.json ή yourmod:path/to/file.json.\n\nΑν είναι ενεργό το «Εξαγωγή από τη διαδρομή πηγής», συμπληρώνεται αυτόματα με βάση έναν φάκελο assets/<domain>/... στη διαδρομή πηγής.",
@@ -45,5 +45,7 @@
   "HelpText": "Πλευρά patch\n• Διακομιστής: το patch εκτελείται μόνο στον διακομιστή.\n• Πελάτης: το patch εκτελείται μόνο στον πελάτη.\n• Και τα δύο: δεν γράφεται side, άρα το patch εφαρμόζεται παντού.\n\nΛειτουργία array\n• Index-by-index: συγκρίνει arrays στοιχείο προς στοιχείο. Η πιο συμβατή επιλογή, ειδικά με ενεργό το «Προτίμηση addmerge». Ιδανικό όταν και άλλα mods μπορεί να κάνουν patch στο ίδιο αρχείο.\n• Replace whole arrays: αντικαθιστά ολόκληρο το array κάθε φορά που αλλάζει. Χρήσιμο όταν το array είναι ουσιαστικά “δικό σας” (δικό σας mod περιεχόμενο ή κάτι που δύσκολα θα αγγίξουν άλλοι).",
   "LanguageTooltip": "Αλλαγή γλώσσας",
   "DialogSelectJsonTitle": "Επιλογή JSON αρχείου",
-  "DialogSavePatchTitle": "Αποθήκευση αρχείου patch"
+  "DialogSavePatchTitle": "Αποθήκευση αρχείου patch",
+  "FolderCompareLabel": "Σύγκριση φακέλων (αναδρομικά)",
+  "FolderCompareTooltip": "Συγκρίνει δύο φακέλους με αρχεία JSON και γράφει στον φάκελο εξόδου μόνο τα τροποποιημένα patch αρχεία."
 }

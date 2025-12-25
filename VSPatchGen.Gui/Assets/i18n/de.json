@@ -20,8 +20,8 @@
   "SideBoth": "Beide",
   "ArrayModeLabel": "Array-Modus",
   "ArrayModeTooltip": "Wie JSON-Arrays beim Erzeugen der Operationen behandelt werden.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Ganze Arrays ersetzen",
+  "ArrayModeIndex": "Index für Index",
   "TargetFileIdLabel": "Ziel-Datei-ID",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Dies wird zum Patch-Feld 'file', z.B. game:path/to/file.json oder yourmod:path/to/file.json.\n\nWenn „Aus Quellpfad ableiten“ aktiviert ist, wird dies automatisch anhand eines assets/<domain>/... Ordners im Quellpfad ausgefüllt.",
@@ -45,5 +45,7 @@
   "HelpText": "Patch-Seite\n• Server: Patch läuft nur auf dem Server.\n• Client: Patch läuft nur auf dem Client.\n• Beide: Es wird keine side geschrieben, daher gilt der Patch überall.\n\nArray-Modus\n• Index-by-index: vergleicht Arrays Element für Element. Am kompatibelsten, besonders mit aktiviertem „addmerge bevorzugen“. Ideal, wenn auch andere Mods dieselbe Datei patchen könnten.\n• Replace whole arrays: ersetzt das gesamte Array, sobald es sich ändert. Nützlich, wenn das Array im Grunde „deins“ ist (eigener Mod-Inhalt oder etwas, das andere vermutlich nicht patchen).",
   "LanguageTooltip": "Sprache ändern",
   "DialogSelectJsonTitle": "JSON-Datei auswählen",
-  "DialogSavePatchTitle": "Patchdatei speichern"
+  "DialogSavePatchTitle": "Patchdatei speichern",
+  "FolderCompareLabel": "Ordner vergleichen (rekursiv)",
+  "FolderCompareTooltip": "Vergleicht zwei Ordner mit JSON-Dateien und schreibt nur die geänderten Patch-Dateien in den Ausgabeordner."
 }

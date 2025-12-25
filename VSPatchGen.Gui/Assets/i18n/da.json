@@ -20,8 +20,8 @@
   "SideBoth": "Begge",
   "ArrayModeLabel": "Array-tilstand",
   "ArrayModeTooltip": "Hvordan JSON-arrays håndteres, når operationer genereres.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Erstat hele arrays",
+  "ArrayModeIndex": "Indeks for indeks",
   "TargetFileIdLabel": "Målfil-id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Dette bliver patchens 'file'-felt, fx game:path/to/file.json eller yourmod:path/to/file.json.\n\nHvis “Udled fra kildesti” er aktiveret, udfyldes dette automatisk baseret på en assets/<domain>/... mappe i kildestien.",
@@ -45,5 +45,7 @@
   "HelpText": "Patch-side\n• Server: patchen kører kun på serveren.\n• Klient: patchen kører kun på klienten.\n• Begge: der skrives ingen side, så patchen gælder overalt.\n\nArray-tilstand\n• Index-by-index: sammenligner arrays element for element. Mest kompatibelt, især med “Foretræk addmerge” aktiveret. Godt hvis andre mods også kan patche den samme fil.\n• Replace whole arrays: erstatter hele arrayet, når det ændrer sig. Nyttigt når arrayet i praksis er “dit” (eget modindhold eller noget, andre næppe vil patche).",
   "LanguageTooltip": "Skift sprog",
   "DialogSelectJsonTitle": "Vælg JSON-fil",
-  "DialogSavePatchTitle": "Gem patchfil"
+  "DialogSavePatchTitle": "Gem patchfil",
+  "FolderCompareLabel": "Sammenlign mapper (rekursivt)",
+  "FolderCompareTooltip": "Sammenligner to mapper med JSON-filer og skriver kun de ændrede patchfiler til outputmappen."
 }

@@ -20,8 +20,8 @@
   "SideBoth": "둘 다",
   "ArrayModeLabel": "배열 모드",
   "ArrayModeTooltip": "작업을 생성할 때 JSON 배열을 어떻게 처리할지 선택합니다.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "배열 전체 바꾸기",
+  "ArrayModeIndex": "인덱스별 비교",
   "TargetFileIdLabel": "대상 파일 id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "패치의 'file' 필드가 됩니다(예: game:path/to/file.json 또는 yourmod:path/to/file.json).\n\n“소스 경로에서 추론”이 켜져 있으면, 소스 경로의 assets/<domain>/... 폴더를 기반으로 자동으로 채워집니다.",
@@ -45,5 +45,7 @@
   "HelpText": "패치 측\n• 서버: 패치는 서버에서만 실행됩니다.\n• 클라이언트: 패치는 클라이언트에서만 실행됩니다.\n• 둘 다: side를 쓰지 않으므로 어디서나 적용됩니다.\n\n배열 모드\n• Index-by-index: 배열을 요소 단위로 비교합니다. 가장 호환성이 높으며, 특히 “addmerge 우선”이 켜져 있을 때 좋습니다. 다른 모드도 같은 파일을 패치할 수 있는 경우에 적합합니다.\n• Replace whole arrays: 변경될 때마다 배열 전체를 교체합니다. 배열이 사실상 “내 것”(내 모드 콘텐츠, 또는 다른 사람이 건드릴 가능성이 낮은 것)인 경우 유용합니다.",
   "LanguageTooltip": "언어 변경",
   "DialogSelectJsonTitle": "JSON 파일 선택",
-  "DialogSavePatchTitle": "패치 파일 저장"
+  "DialogSavePatchTitle": "패치 파일 저장",
+  "FolderCompareLabel": "폴더 비교(재귀)",
+  "FolderCompareTooltip": "JSON 파일이 들어 있는 두 폴더를 비교하고, 변경된 패치 파일만 출력 폴더에 저장합니다."
 }

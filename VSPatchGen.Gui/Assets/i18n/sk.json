@@ -17,11 +17,11 @@
   "SideTooltip": "Vyberte, na ktorej strane má patch platiť. „Obe“ vynechá pole side, takže patch platí všade.",
   "SideServer": "Server",
   "SideClient": "Klient",
-  "SideBoth": "Obe",
+  "SideBoth": "Oboje",
   "ArrayModeLabel": "Režim polí",
   "ArrayModeTooltip": "Ako spracovať JSON polia pri generovaní operácií.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Nahradiť celé polia",
+  "ArrayModeIndex": "Index po indexe",
   "TargetFileIdLabel": "ID cieľového súboru",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Toto bude pole 'file' v patchi, napr. game:path/to/file.json alebo yourmod:path/to/file.json.\n\nAk je „Odvodiť zo zdrojovej cesty“ zapnuté, vyplní sa automaticky podľa priečinka assets/<domain>/... v zdrojovej ceste.",
@@ -45,5 +45,7 @@
   "HelpText": "Strana patchu\n• Server: patch beží iba na serveri.\n• Klient: patch beží iba na klientovi.\n• Obe: pole side sa nezapíše, takže patch platí všade.\n\nRežim polí\n• Index-by-index: porovnáva polia prvok po prvku. Najkompatibilnejšie, najmä keď je zapnuté „Preferovať addmerge“. Skvelé, ak by aj iné módy mohli patchovať ten istý súbor.\n• Replace whole arrays: nahradí celé pole vždy, keď sa zmení. Užitočné, keď je pole v podstate “vaše” (váš vlastný obsah módu alebo niečo, čo ostatní pravdepodobne nebudú patchovať).",
   "LanguageTooltip": "Zmeniť jazyk",
   "DialogSelectJsonTitle": "Vybrať JSON súbor",
-  "DialogSavePatchTitle": "Uložiť patch súbor"
+  "DialogSavePatchTitle": "Uložiť patch súbor",
+  "FolderCompareLabel": "Porovnať priečinky (rekurzívne)",
+  "FolderCompareTooltip": "Porovná dva priečinky so súbormi JSON a do výstupného priečinka uloží iba zmenené patch súbory."
 }

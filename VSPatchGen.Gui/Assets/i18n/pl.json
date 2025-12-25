@@ -17,11 +17,11 @@
   "SideTooltip": "Wybierz, po której stronie ma działać patch. “Obie” pomija pole side, więc patch działa wszędzie.",
   "SideServer": "Serwer",
   "SideClient": "Klient",
-  "SideBoth": "Obie",
+  "SideBoth": "Oba",
   "ArrayModeLabel": "Tryb tablic",
   "ArrayModeTooltip": "Jak obsługiwać tablice JSON podczas generowania operacji.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Zastąp całe tablice",
+  "ArrayModeIndex": "Indeks po indeksie",
   "TargetFileIdLabel": "Id pliku docelowego",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "To będzie pole 'file' w patchu, np. game:path/to/file.json albo yourmod:path/to/file.json.\n\nJeśli „Wywnioskuj ze ścieżki źródłowej” jest włączone, pole zostanie uzupełnione automatycznie na podstawie folderu assets/<domain>/... w ścieżce źródłowej.",
@@ -45,5 +45,7 @@
   "HelpText": "Strona patcha\n• Serwer: patch działa tylko na serwerze.\n• Klient: patch działa tylko na kliencie.\n• Obie: pole side nie jest zapisywane, więc patch działa wszędzie.\n\nTryb tablic\n• Index-by-index: porównuje tablice element po elemencie. Najbardziej kompatybilne, szczególnie gdy włączone jest „Preferuj addmerge”. Dobre, gdy inne mody też mogą patchować ten sam plik.\n• Replace whole arrays: zastępuje całą tablicę za każdym razem, gdy się zmienia. Przydatne, gdy tablica jest zasadniczo “Twoja” (Twoja zawartość moda lub coś, czego inni raczej nie będą patchować).",
   "LanguageTooltip": "Zmień język",
   "DialogSelectJsonTitle": "Wybierz plik JSON",
-  "DialogSavePatchTitle": "Zapisz plik patcha"
+  "DialogSavePatchTitle": "Zapisz plik patcha",
+  "FolderCompareLabel": "Porównaj foldery (rekurencyjnie)",
+  "FolderCompareTooltip": "Porównuje dwa foldery z plikami JSON i zapisuje do folderu wyjściowego tylko zmienione pliki poprawek."
 }

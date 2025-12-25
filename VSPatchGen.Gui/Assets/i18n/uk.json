@@ -17,11 +17,11 @@
   "SideTooltip": "Виберіть, на якій стороні застосовується патч. «Обидві» не записує поле side, тож патч застосовується всюди.",
   "SideServer": "Сервер",
   "SideClient": "Клієнт",
-  "SideBoth": "Обидві",
+  "SideBoth": "Обидва",
   "ArrayModeLabel": "Режим масивів",
   "ArrayModeTooltip": "Як обробляти JSON-масиви під час генерації операцій.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Замінити цілі масиви",
+  "ArrayModeIndex": "Індекс за індексом",
   "TargetFileIdLabel": "ID цільового файла",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Це стане полем 'file' у патчі, наприклад game:path/to/file.json або yourmod:path/to/file.json.\n\nЯкщо ввімкнено «Виводити з шляху джерела», поле заповнюється автоматично на основі папки assets/<domain>/... у шляху джерела.",
@@ -45,5 +45,7 @@
   "HelpText": "Сторона патча\n• Сервер: патч виконується лише на сервері.\n• Клієнт: патч виконується лише на клієнті.\n• Обидві: поле side не записується, тож патч застосовується всюди.\n\nРежим масивів\n• Index-by-index: порівнює масиви елемент за елементом. Найсумісніший варіант, особливо коли ввімкнено «Надавати перевагу addmerge». Чудово, якщо інші моди також можуть патчити той самий файл.\n• Replace whole arrays: замінює весь масив щоразу, коли він змінюється. Корисно, коли масив фактично «ваш» (контент вашого мода або те, що навряд чи будуть патчити інші).",
   "LanguageTooltip": "Змінити мову",
   "DialogSelectJsonTitle": "Вибрати JSON-файл",
-  "DialogSavePatchTitle": "Зберегти файл патча"
+  "DialogSavePatchTitle": "Зберегти файл патча",
+  "FolderCompareLabel": "Порівняння папок (рекурсивно)",
+  "FolderCompareTooltip": "Порівнює дві папки з JSON-файлами та записує до вихідної папки лише змінені патчі."
 }

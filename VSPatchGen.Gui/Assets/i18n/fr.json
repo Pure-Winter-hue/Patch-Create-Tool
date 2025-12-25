@@ -20,8 +20,8 @@
   "SideBoth": "Les deux",
   "ArrayModeLabel": "Mode de tableau",
   "ArrayModeTooltip": "Comment gérer les tableaux JSON lors de la génération des opérations.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Remplacer les tableaux entiers",
+  "ArrayModeIndex": "Index par index",
   "TargetFileIdLabel": "ID du fichier cible",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Devient le champ 'file' du patch, par ex. game:path/to/file.json ou yourmod:path/to/file.json.\n\nSi « Déduire depuis le chemin source » est activé, ce champ est rempli automatiquement à partir d’un dossier assets/<domain>/... dans le chemin source.",
@@ -45,5 +45,7 @@
   "HelpText": "Côté du patch\n• Serveur : le patch s’exécute uniquement côté serveur.\n• Client : le patch s’exécute uniquement côté client.\n• Les deux : aucun side n’est écrit, le patch s’applique donc partout.\n\nMode de tableau\n• Index-by-index : compare les tableaux élément par élément. Le plus compatible, surtout avec « Préférer addmerge » activé. Idéal si d’autres mods peuvent aussi patcher le même fichier.\n• Replace whole arrays : remplace tout le tableau dès qu’il change. Utile quand le tableau est essentiellement « à vous » (votre propre contenu de mod ou quelque chose peu susceptible d’être patché par d’autres).",
   "LanguageTooltip": "Changer de langue",
   "DialogSelectJsonTitle": "Sélectionner un fichier JSON",
-  "DialogSavePatchTitle": "Enregistrer le fichier de patch"
+  "DialogSavePatchTitle": "Enregistrer le fichier de patch",
+  "FolderCompareLabel": "Comparaison de dossiers (récursive)",
+  "FolderCompareTooltip": "Compare deux dossiers de fichiers JSON et n’écrit que les patchs modifiés dans le dossier de sortie."
 }

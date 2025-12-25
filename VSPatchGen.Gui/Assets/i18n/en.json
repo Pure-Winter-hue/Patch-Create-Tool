@@ -45,5 +45,7 @@
   "HelpText": "Patch side\n• Server: patch runs only on the server.\n• Client: patch runs only on the client.\n• Both: no side is written, so the patch applies everywhere.\n\nArray mode\n\n• Index-by-index: compares arrays element-by-element. This is the most compatible choice, especially with Prefer addmerge enabled. Great for patching files that other mods might also touch.\n\n• Replace whole arrays: replaces the entire array whenever it changes. Useful when the array is basically “yours” (your own mod content or something unlikely to be patched by others).",
   "LanguageTooltip": "Change language",
   "DialogSelectJsonTitle": "Select JSON file",
-  "DialogSavePatchTitle": "Save patch file"
+  "DialogSavePatchTitle": "Save patch file",
+  "FolderCompareLabel": "Folder compare (recursive)",
+  "FolderCompareTooltip": "Compare two folders of JSON files and write only the changed patch files into the output folder."
 }

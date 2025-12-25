@@ -20,8 +20,8 @@
   "SideBoth": "كلاهما",
   "ArrayModeLabel": "وضع المصفوفات",
   "ArrayModeTooltip": "كيفية التعامل مع مصفوفات JSON عند إنشاء العمليات.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "استبدال المصفوفات بالكامل",
+  "ArrayModeIndex": "فهرس بفهرس",
   "TargetFileIdLabel": "معرّف ملف الهدف",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "هذا يصبح حقل 'file' في الترقية، مثل game:path/to/file.json أو yourmod:path/to/file.json.\n\nإذا كان “استنتاج من مسار المصدر” مفعّلًا، يتم ملؤه تلقائيًا بناءً على مجلد assets/<domain>/... في مسار المصدر.",
@@ -45,5 +45,7 @@
   "HelpText": "جانب الترقية\n• الخادم: تعمل الترقية على الخادم فقط.\n• العميل: تعمل الترقية على العميل فقط.\n• كلاهما: لا يتم كتابة side، لذا تُطبَّق الترقية في كل مكان.\n\nوضع المصفوفات\n• Index-by-index: يقارن المصفوفات عنصرًا بعنصر. الأكثر توافقًا، خصوصًا مع تفعيل “تفضيل addmerge”. ممتاز عندما قد تقوم تعديلات أخرى بترقيع نفس الملف.\n• Replace whole arrays: يستبدل المصفوفة بالكامل كلما تغيّرت. مفيد عندما تكون المصفوفة “ملكك” عمليًا (محتوى تعديلاتك الخاصة أو شيء غير محتمل أن يرقّعه الآخرون).",
   "LanguageTooltip": "تغيير اللغة",
   "DialogSelectJsonTitle": "اختيار ملف JSON",
-  "DialogSavePatchTitle": "حفظ ملف الترقية"
+  "DialogSavePatchTitle": "حفظ ملف الترقية",
+  "FolderCompareLabel": "مقارنة المجلدات (تكراري)",
+  "FolderCompareTooltip": "يقارن بين مجلدين يحتويان على ملفات JSON ويكتب في مجلد الإخراج ملفات التصحيح التي تغيّرت فقط."
 }

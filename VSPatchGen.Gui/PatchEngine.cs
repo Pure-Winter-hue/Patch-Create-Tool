@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -369,5 +371,195 @@ internal static class PatchFileWriter
 
         serializer.Serialize(writer, ops);
         writer.Flush();
+    }
+}
+
+internal sealed class FolderPatchResult
+{
+    public int FilesScanned { get; init; }
+    public int PatchesWritten { get; init; }
+    public int TotalOpsWritten { get; init; }
+    public List<string> Errors { get; init; } = new();
+}
+
+internal static class FolderPatchGenerator
+{
+    /// <summary>
+    /// Recursively compares <paramref name="editedRoot"/> against <paramref name="sourceRoot"/>.
+    /// For every JSON file under editedRoot that produces at least one patch operation, writes a patch
+    /// file into <paramref name="outRoot"/> (all patches in one flat folder).
+    /// </summary>
+    public static FolderPatchResult GenerateFolder(
+        string sourceRoot,
+        string editedRoot,
+        string outRoot,
+        PatchGeneratorOptions opt,
+        bool autoDepends)
+    {
+        var errors = new List<string>();
+
+        sourceRoot = Path.GetFullPath(sourceRoot);
+        editedRoot = Path.GetFullPath(editedRoot);
+        outRoot = Path.GetFullPath(outRoot);
+
+        if (!Directory.Exists(sourceRoot))
+            throw new DirectoryNotFoundException($"Source folder not found: {sourceRoot}");
+        if (!Directory.Exists(editedRoot))
+            throw new DirectoryNotFoundException($"Edited folder not found: {editedRoot}");
+
+        Directory.CreateDirectory(outRoot);
+
+        // Folder compare is typically run repeatedly while iterating.
+        // To avoid confusing "duplicates" from earlier runs (e.g. when collision
+        // hashing rules change, or when the set of input files changes), we clear
+        // the output folder's top-level JSON files before writing new ones.
+        // Output folders are intended to be dedicated patch destinations.
+        foreach (var existing in Directory.EnumerateFiles(outRoot, "*.json", SearchOption.TopDirectoryOnly))
+        {
+            try { File.Delete(existing); }
+            catch { /* ignore */ }
+        }
+
+        // Enumerate only from editedRoot so the output structure matches the edited structure.
+        var editedFiles = Directory.EnumerateFiles(editedRoot, "*", SearchOption.AllDirectories)
+            .Where(f => string.Equals(Path.GetExtension(f), ".json", StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
+        // Build a stable mapping from edited relative paths to output file names.
+        // We do this up-front to avoid run-to-run filename flips when two different
+        // relative paths collapse to the same flattened/sanitized filename.
+        var relPaths = editedFiles
+            .Select(f => Path.GetRelativePath(editedRoot, f))
+            .ToList();
+
+        var nameMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var group in relPaths.GroupBy(MakeFlatPatchFileName, StringComparer.OrdinalIgnoreCase))
+        {
+            var baseName = group.Key;
+
+            if (group.Count() == 1)
+            {
+                var rel = group.First();
+                nameMap[rel] = baseName;
+                continue;
+            }
+
+            // Collision: give every colliding relative path its own deterministic name.
+            foreach (var rel in group.OrderBy(r => r, StringComparer.OrdinalIgnoreCase))
+            {
+                nameMap[rel] = AppendHashBeforeExtension(baseName, ShortHash(rel));
+            }
+
+            // If older versions wrote a non-hashed file for the first entry, remove it
+            // so users don't end up with "split" outputs after reruns.
+            var legacyPath = Path.Combine(outRoot, baseName);
+            if (File.Exists(legacyPath))
+            {
+                try { File.Delete(legacyPath); }
+                catch { /* ignore */ }
+            }
+        }
+
+        int patchesWritten = 0;
+        int totalOps = 0;
+
+        foreach (var editedFile in editedFiles)
+        {
+            var rel = Path.GetRelativePath(editedRoot, editedFile);
+            var sourceFile = Path.Combine(sourceRoot, rel);
+
+            // Flatten relative paths to a single output folder.
+            // Name is deterministic (see precomputed nameMap).
+            var outName = nameMap.TryGetValue(rel, out var mapped)
+                ? mapped
+                : AppendHashBeforeExtension(MakeFlatPatchFileName(rel), ShortHash(rel));
+
+            var outFile = Path.Combine(outRoot, outName);
+
+            try
+            {
+                // FileId inference prefers the edited file path (most common), but falls back.
+                string fileId;
+                if (!VsFileId.TryInferFileId(editedFile, out fileId) &&
+                    !VsFileId.TryInferFileId(sourceFile, out fileId))
+                {
+                    // Best-effort fallback so folder mode still works outside an /assets/<domain>/ tree.
+                    var relUnix = rel.Replace('\\', '/');
+                    fileId = $"game:{relUnix}";
+                }
+
+                List<DependsOnEntry>? dependsOn = null;
+                if (autoDepends)
+                {
+                    var dom = VsFileId.GetDomain(fileId);
+                    if (!string.IsNullOrWhiteSpace(dom) && !dom.Equals("game", StringComparison.OrdinalIgnoreCase))
+                        dependsOn = new List<DependsOnEntry> { new() { ModId = dom } };
+                }
+
+                JToken? origTok = null;
+                if (File.Exists(sourceFile))
+                    origTok = Json5ish.LoadFile(sourceFile);
+
+                var editTok = Json5ish.LoadFile(editedFile);
+
+                var ops = PatchGenerator.Generate(
+                    origTok,
+                    editTok,
+                    fileId,
+                    opt,
+                    dependsOn);
+
+                if (ops.Count == 0) continue;
+
+                PatchFileWriter.Write(outFile, ops);
+                patchesWritten++;
+                totalOps += ops.Count;
+            }
+            catch (Exception ex)
+            {
+                errors.Add($"{rel}: {ex.Message}");
+            }
+        }
+
+        return new FolderPatchResult
+        {
+            FilesScanned = editedFiles.Count,
+            PatchesWritten = patchesWritten,
+            TotalOpsWritten = totalOps,
+            Errors = errors
+        };
+    }
+
+    private static string MakeFlatPatchFileName(string relativePath)
+    {
+        // Example: "blocks/stone/rock.json" -> "blocks__stone__rock.json"
+        var relUnix = relativePath.Replace('\\', '/');
+        var flattened = relUnix.Replace("/", "__");
+
+        // Sanitize for Windows/macOS/Linux filenames.
+        var invalid = Path.GetInvalidFileNameChars();
+        var chars = flattened.Select(c => invalid.Contains(c) ? '_' : c).ToArray();
+        var name = new string(chars);
+
+        if (!name.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+            name += ".json";
+
+        return name;
+    }
+
+    private static string AppendHashBeforeExtension(string fileName, string hash)
+    {
+        var ext = Path.GetExtension(fileName);
+        var stem = Path.GetFileNameWithoutExtension(fileName);
+        return $"{stem}__{hash}{ext}";
+    }
+
+    private static string ShortHash(string s)
+    {
+        using var sha = SHA256.Create();
+        var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(s));
+        // 8 hex chars is plenty for collision avoidance here.
+        return BitConverter.ToString(bytes, 0, 4).Replace("-", "").ToLowerInvariant();
     }
 }

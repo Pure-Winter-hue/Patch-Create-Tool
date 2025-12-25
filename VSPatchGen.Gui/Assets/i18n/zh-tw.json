@@ -20,8 +20,8 @@
   "SideBoth": "兩者",
   "ArrayModeLabel": "陣列模式",
   "ArrayModeTooltip": "產生操作時如何處理 JSON 陣列。",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "取代整個陣列",
+  "ArrayModeIndex": "依索引逐項",
   "TargetFileIdLabel": "目標檔案 id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "這會成為補丁中的 'file' 欄位，例如 game:path/to/file.json 或 yourmod:path/to/file.json。\n\n若啟用「從來源路徑推斷」，會根據來源路徑中的 assets/<domain>/... 資料夾自動填入。",
@@ -45,5 +45,7 @@
   "HelpText": "補丁端\n• 伺服器：補丁只在伺服器上執行。\n• 用戶端：補丁只在用戶端上執行。\n• 兩者：不寫 side，因此補丁在所有地方生效。\n\n陣列模式\n• Index-by-index：逐元素比較陣列。相容性最好，尤其是在啟用「優先 addmerge」時。適合其他模組也可能會補丁同一檔案的情況。\n• Replace whole arrays：陣列一變更就替換整個陣列。適合陣列基本是「你的」（你自己的模組內容，或其他人不太可能去改/補丁的內容）。",
   "LanguageTooltip": "切換語言",
   "DialogSelectJsonTitle": "選擇 JSON 檔案",
-  "DialogSavePatchTitle": "儲存補丁檔"
+  "DialogSavePatchTitle": "儲存補丁檔",
+  "FolderCompareLabel": "資料夾比對（遞迴）",
+  "FolderCompareTooltip": "比對兩個包含 JSON 檔案的資料夾，並只將已變更的補丁寫入輸出資料夾。"
 }

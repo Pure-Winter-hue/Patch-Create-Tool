@@ -20,8 +20,8 @@
   "SideBoth": "两者",
   "ArrayModeLabel": "数组模式",
   "ArrayModeTooltip": "生成操作时如何处理 JSON 数组。",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "替换整个数组",
+  "ArrayModeIndex": "按索引逐项",
   "TargetFileIdLabel": "目标文件 id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "这会成为补丁中的 'file' 字段，例如 game:path/to/file.json 或 yourmod:path/to/file.json。\n\n若启用“从源路径推断”，会根据源路径中的 assets/<domain>/... 文件夹自动填写。",
@@ -45,5 +45,7 @@
   "HelpText": "补丁侧\n• 服务器：补丁仅在服务器运行。\n• 客户端：补丁仅在客户端运行。\n• 两者：不写 side，因此补丁在所有地方生效。\n\n数组模式\n• Index-by-index：逐元素比较数组。兼容性最好，尤其是在启用“优先 addmerge”时。适合其他模组也可能会补丁同一文件的情况。\n• Replace whole arrays：数组一旦变化就替换整个数组。适合数组基本是“你的”（你自己的模组内容，或其他人不太会去改/补丁的内容）。",
   "LanguageTooltip": "切换语言",
   "DialogSelectJsonTitle": "选择 JSON 文件",
-  "DialogSavePatchTitle": "保存补丁文件"
+  "DialogSavePatchTitle": "保存补丁文件",
+  "FolderCompareLabel": "文件夹比较（递归）",
+  "FolderCompareTooltip": "比较两个包含 JSON 文件的文件夹，并只将已更改的补丁写入输出文件夹。"
 }

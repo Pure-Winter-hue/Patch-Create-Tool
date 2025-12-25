@@ -20,8 +20,8 @@
   "SideBoth": "שניהם",
   "ArrayModeLabel": "מצב מערכים",
   "ArrayModeTooltip": "איך לטפל במערכי JSON בעת יצירת פעולות.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "החלפת מערכים שלמים",
+  "ArrayModeIndex": "אינדקס לפי אינדקס",
   "TargetFileIdLabel": "מזהה קובץ יעד",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "זה יהפוך לשדה 'file' בפאץ׳, למשל game:path/to/file.json או yourmod:path/to/file.json.\n\nאם “הסק מנתיב המקור” מופעל, השדה ימולא אוטומטית לפי תיקיית assets/<domain>/... בנתיב המקור.",
@@ -45,5 +45,7 @@
   "HelpText": "צד הפאץ׳\n• שרת: הפאץ׳ רץ רק בשרת.\n• לקוח: הפאץ׳ רץ רק בלקוח.\n• שניהם: לא נכתב side, ולכן הפאץ׳ חל בכל מקום.\n\nמצב מערכים\n• Index-by-index: משווה מערכים איבר‑איבר. הכי תואם, במיוחד כש‑“העדף addmerge” מופעל. מצוין כשמודים אחרים עשויים גם הם לעשות פאץ׳ לאותו קובץ.\n• Replace whole arrays: מחליף את כל המערך בכל שינוי. שימושי כשהמערך הוא בעצם “שלכם” (תוכן המוד שלכם או משהו שסביר שלא יקוּנפג על ידי אחרים).",
   "LanguageTooltip": "שינוי שפה",
   "DialogSelectJsonTitle": "בחירת קובץ JSON",
-  "DialogSavePatchTitle": "שמירת קובץ פאץ׳"
+  "DialogSavePatchTitle": "שמירת קובץ פאץ׳",
+  "FolderCompareLabel": "השוואת תיקיות (רקורסיבי)",
+  "FolderCompareTooltip": "משווה שתי תיקיות של קובצי JSON וכותב לתיקיית הפלט רק את קובצי ה־patch ששונו."
 }

@@ -20,8 +20,8 @@
   "SideBoth": "İkisi de",
   "ArrayModeLabel": "Dizi modu",
   "ArrayModeTooltip": "Operasyonlar oluşturulurken JSON dizilerinin nasıl ele alınacağı.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Tüm dizileri değiştir",
+  "ArrayModeIndex": "Dizin dizin",
   "TargetFileIdLabel": "Hedef dosya id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Bu, yamadaki 'file' alanı olur; örn. game:path/to/file.json veya yourmod:path/to/file.json.\n\n“Kaynak yoldan çıkar” etkinse, bu alan kaynak yolundaki assets/<domain>/... klasörüne göre otomatik doldurulur.",
@@ -45,5 +45,7 @@
   "HelpText": "Yama tarafı\n• Sunucu: yama yalnızca sunucuda çalışır.\n• İstemci: yama yalnızca istemcide çalışır.\n• İkisi de: side yazılmaz, böylece yama her yerde uygulanır.\n\nDizi modu\n• Index-by-index: dizileri öğe öğe karşılaştırır. En uyumlu seçenek, özellikle “addmerge tercih et” etkinse. Diğer modlar aynı dosyayı da yamalayabiliyorsa çok iyi.\n• Replace whole arrays: dizi değiştiğinde tüm diziyi değiştirir. Dizi temelde “sizin” ise (kendi mod içeriğiniz veya başkalarının pek dokunmayacağı bir şey) kullanışlıdır.",
   "LanguageTooltip": "Dili değiştir",
   "DialogSelectJsonTitle": "JSON dosyası seç",
-  "DialogSavePatchTitle": "Yama dosyasını kaydet"
+  "DialogSavePatchTitle": "Yama dosyasını kaydet",
+  "FolderCompareLabel": "Klasör karşılaştır (özyinelemeli)",
+  "FolderCompareTooltip": "JSON dosyaları içeren iki klasörü karşılaştırır ve yalnızca değişen yama dosyalarını çıktı klasörüne yazar."
 }

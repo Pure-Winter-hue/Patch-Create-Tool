@@ -20,8 +20,8 @@
   "SideBoth": "Molemmat",
   "ArrayModeLabel": "Taulukkomoodi",
   "ArrayModeTooltip": "Miten JSON-taulukot käsitellään operaatioita luotaessa.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Korvaa kokonaiset taulukot",
+  "ArrayModeIndex": "Indeksi indeksiltä",
   "TargetFileIdLabel": "Kohdetiedoston id",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Tästä tulee patchin 'file'-kenttä, esim. game:path/to/file.json tai yourmod:path/to/file.json.\n\nJos “Päättele lähdepolusta” on käytössä, tämä täytetään automaattisesti lähdepolun assets/<domain>/... -kansion perusteella.",
@@ -45,5 +45,7 @@
   "HelpText": "Patch-puoli\n• Palvelin: patchi suoritetaan vain palvelimella.\n• Asiakas: patchi suoritetaan vain asiakkaalla.\n• Molemmat: side-kenttää ei kirjoiteta, joten patchi toimii kaikkialla.\n\nTaulukkomoodi\n• Index-by-index: vertaa taulukoita alkio kerrallaan. Yhteensopivin vaihtoehto, etenkin kun “Suosi addmerge” on käytössä. Hyvä, jos muutkin modit voivat patchata samaa tiedostoa.\n• Replace whole arrays: korvaa koko taulukon aina kun se muuttuu. Hyödyllinen, kun taulukko on käytännössä “sinun” (oman modisi sisältö tai jotain, johon muut eivät todennäköisesti koske).",
   "LanguageTooltip": "Vaihda kieltä",
   "DialogSelectJsonTitle": "Valitse JSON-tiedosto",
-  "DialogSavePatchTitle": "Tallenna patch-tiedosto"
+  "DialogSavePatchTitle": "Tallenna patch-tiedosto",
+  "FolderCompareLabel": "Kansiovertailu (rekursiivinen)",
+  "FolderCompareTooltip": "Vertaa kahta JSON-tiedostoja sisältävää kansiota ja kirjoittaa tulostuskansioon vain muuttuneet patch-tiedostot."
 }

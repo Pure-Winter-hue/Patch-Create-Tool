@@ -20,8 +20,8 @@
   "SideBoth": "Ambele",
   "ArrayModeLabel": "Mod de array",
   "ArrayModeTooltip": "Cum să fie tratate array-urile JSON la generarea operațiilor.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Înlocuiește tablourile întregi",
+  "ArrayModeIndex": "Index cu index",
   "TargetFileIdLabel": "Id fișier țintă",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Acesta devine câmpul 'file' al patch-ului, de ex. game:path/to/file.json sau yourmod:path/to/file.json.\n\nDacă „Deducere din calea sursei” este activată, câmpul se completează automat pe baza unui folder assets/<domain>/... din calea sursei.",
@@ -45,5 +45,7 @@
   "HelpText": "Partea patch-ului\n• Server: patch-ul rulează doar pe server.\n• Client: patch-ul rulează doar pe client.\n• Ambele: nu se scrie side, deci patch-ul se aplică peste tot.\n\nMod de array\n• Index-by-index: compară array-urile element cu element. Cel mai compatibil, mai ales cu “Preferă addmerge” activat. Bun când și alte moduri ar putea patch-ui același fișier.\n• Replace whole arrays: înlocuiește întregul array ori de câte ori se schimbă. Util când array-ul este practic “al tău” (conținutul propriului mod sau ceva ce e puțin probabil să fie patch-uit de alții).",
   "LanguageTooltip": "Schimbă limba",
   "DialogSelectJsonTitle": "Selectează fișier JSON",
-  "DialogSavePatchTitle": "Salvează fișierul de patch"
+  "DialogSavePatchTitle": "Salvează fișierul de patch",
+  "FolderCompareLabel": "Compară foldere (recursiv)",
+  "FolderCompareTooltip": "Compară două foldere cu fișiere JSON și scrie în folderul de ieșire doar patch-urile modificate."
 }

@@ -20,8 +20,8 @@
   "SideBoth": "И двете",
   "ArrayModeLabel": "Режим на масиви",
   "ArrayModeTooltip": "Как да се обработват JSON масивите при генериране на операции.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Замени цели масиви",
+  "ArrayModeIndex": "Индекс по индекс",
   "TargetFileIdLabel": "ID на целевия файл",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Това става полето 'file' в пача, напр. game:path/to/file.json или yourmod:path/to/file.json.\n\nАко „Извлечи от пътя на източника“ е включено, полето се попълва автоматично въз основа на папка assets/<domain>/... в пътя на източника.",
@@ -45,5 +45,7 @@
   "HelpText": "Страна на пача\n• Сървър: пачът се изпълнява само на сървъра.\n• Клиент: пачът се изпълнява само на клиента.\n• И двете: не се записва side, така че пачът важи навсякъде.\n\nРежим на масиви\n• Index-by-index: сравнява масивите елемент по елемент. Най-съвместимият избор, особено с включено „Предпочитай addmerge“. Добър, когато и други модове могат да пачват същия файл.\n• Replace whole arrays: заменя целия масив всеки път, когато се промени. Полезно, когато масивът е по същество „ваш“ (собствено съдържание на мод или нещо, което едва ли ще бъде пачвано от други).",
   "LanguageTooltip": "Смени езика",
   "DialogSelectJsonTitle": "Избери JSON файл",
-  "DialogSavePatchTitle": "Запиши patch файл"
+  "DialogSavePatchTitle": "Запиши patch файл",
+  "FolderCompareLabel": "Сравняване на папки (рекурсивно)",
+  "FolderCompareTooltip": "Сравнява две папки с JSON файлове и записва в изходната папка само променените patch файлове."
 }

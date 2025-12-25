@@ -20,8 +20,8 @@
   "SideBoth": "Ambos",
   "ArrayModeLabel": "Modo de array",
   "ArrayModeTooltip": "Cómo manejar los arrays JSON al generar operaciones.",
-  "ArrayModeReplace": "Replace whole arrays",
-  "ArrayModeIndex": "Index-by-index",
+  "ArrayModeReplace": "Reemplazar matrices completas",
+  "ArrayModeIndex": "Índice por índice",
   "TargetFileIdLabel": "Id del archivo destino",
   "TargetFileIdWatermark": "domain:path/to/file.json",
   "TargetFileIdTooltip": "Esto se convierte en el campo 'file' del parche, por ejemplo game:path/to/file.json o yourmod:path/to/file.json.\n\nSi “Inferir desde la ruta de origen” está activado, se rellena automáticamente basándose en una carpeta assets/<domain>/... dentro de la ruta de origen.",
@@ -45,5 +45,7 @@
   "HelpText": "Lado del parche\n• Servidor: el parche se ejecuta solo en el servidor.\n• Cliente: el parche se ejecuta solo en el cliente.\n• Ambos: no se escribe side, así que el parche se aplica en todas partes.\n\nModo de array\n• Index-by-index: compara arrays elemento por elemento. Es lo más compatible, sobre todo con “Preferir addmerge” activado. Ideal cuando otros mods también podrían parchear el mismo archivo.\n• Replace whole arrays: reemplaza el array completo cuando cambia. Útil cuando el array es básicamente “tuyo” (contenido de tu propio mod o algo poco probable que otros parcheen).",
   "LanguageTooltip": "Cambiar idioma",
   "DialogSelectJsonTitle": "Seleccionar archivo JSON",
-  "DialogSavePatchTitle": "Guardar archivo de parche"
+  "DialogSavePatchTitle": "Guardar archivo de parche",
+  "FolderCompareLabel": "Comparar carpetas (recursivo)",
+  "FolderCompareTooltip": "Compara dos carpetas de archivos JSON y escribe solo los parches modificados en la carpeta de salida."
 }

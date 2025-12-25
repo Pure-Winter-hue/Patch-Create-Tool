@@ -98,6 +98,12 @@
 			</StackPanel>
 
 			<StackPanel MinWidth="260" Margin="0,0,0,0" VerticalAlignment="Bottom" Spacing="6">
+				<CheckBox Name="FolderCompareCheck" IsChecked="False"
+						  Content="{DynamicResource FolderCompareLabel}"
+						  ToolTip.Tip="{DynamicResource FolderCompareTooltip}"
+						  Checked="FolderCompareCheck_Changed"
+						  Unchecked="FolderCompareCheck_Changed" />
+
 				<CheckBox Name="AutoDependsCheck" IsChecked="True"
 						  Content="{DynamicResource AutoDependsLabel}"
 						  ToolTip.Tip="{DynamicResource AutoDependsTooltip}" />
