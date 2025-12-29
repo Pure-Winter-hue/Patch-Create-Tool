@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Diventa il campo 'file' della patch, ad es. game:path/to/file.json o yourmod:path/to/file.json.\n\nSe “Deduce dal percorso sorgente” è attivo, viene compilato automaticamente in base a una cartella assets/<domain>/... nel percorso sorgente.",
   "InferFileIdLabel": "Deduce dal percorso sorgente (assets/<domain>/...)",
   "InferFileIdTooltip": "Attivo: il file sorgente deve trovarsi sotto assets/<domain>/... e viene usato per costruire l’ID del file della patch.\nDisattivo: puoi scegliere il file sorgente da qualsiasi posizione, ma devi inserire tu l’ID del file di destinazione.",
+  "VanillaFilesLabel": "File vanilla (usa il dominio game)",
+  "VanillaFilesTooltip": "Se abilitato, assets/creative e assets/survival vengono trattati come l’unico dominio game durante l’inferenza degli ID file.",
   "AutoDependsLabel": "Aggiungi dependsOn automaticamente",
   "AutoDependsTooltip": "Se attivo, l’app aggiunge una voce dependsOn quando il dominio del file sorgente è diverso dal dominio del file della patch. Per il dominio “game” non viene aggiunto nulla.",
   "PreferAddMergeLabel": "Preferisci addmerge",

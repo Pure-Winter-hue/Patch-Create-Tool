@@ -1,8 +1,9 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="VSPatchGen.Gui.MainWindow"
-        Width="860" Height="560"
-        MinHeight="520"
+        Width="980" Height="640"
+        MinWidth="860"
+        MinHeight="560"
         WindowStartupLocation="CenterScreen"
         Title="{DynamicResource AppTitle}">
 
@@ -95,6 +96,12 @@
 						  ToolTip.Tip="{DynamicResource InferFileIdTooltip}"
 						  Checked="InferFileIdCheck_Changed"
 						  Unchecked="InferFileIdCheck_Changed"/>
+
+				<CheckBox Name="VanillaFilesCheck" IsChecked="False"
+						  Content="{DynamicResource VanillaFilesLabel}"
+						  ToolTip.Tip="{DynamicResource VanillaFilesTooltip}"
+						  Checked="VanillaFilesCheck_Changed"
+						  Unchecked="VanillaFilesCheck_Changed"/>
 			</StackPanel>
 
 			<StackPanel MinWidth="260" Margin="0,0,0,0" VerticalAlignment="Bottom" Spacing="6">

@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Tio fariĝas la 'file' kampo de la fliko, ekzemple game:path/to/file.json aŭ yourmod:path/to/file.json.\n\nSe “Infer from source path” estas ebligita, tio estas plenigita aŭtomate laŭ dosierujo assets/<domain>/... en la fonta vojo.",
   "InferFileIdLabel": "Infer from source path (assets/<domain>/...)",
   "InferFileIdTooltip": "Ebligita: la fonta dosiero devas esti sub assets/<domain>/... kaj tio estas uzata por konstrui la flikan dosier-id.\nMalebligita: vi povas elekti la fontan dosieron de ie ajn, sed vi devas tajpi la celan dosier-id mem.",
+  "VanillaFilesLabel": "Vanilaj dosieroj (uzu la game-domajnon)",
+  "VanillaFilesTooltip": "Se ŝaltite, assets/creative kaj assets/survival estas traktataj kiel la unuigita game-domajno dum inferado de dosier-IDoj.",
   "AutoDependsLabel": "Aŭtomate aldoni dependsOn",
   "AutoDependsTooltip": "Se ebligita, la aplikaĵo aldonos dependsOn-eron kiam la domajno de la fonta dosiero diferencas de la domajno de la flika dosiero. Por la “game” domajno, nenio estas aldonata.",
   "PreferAddMergeLabel": "Preferi addmerge",

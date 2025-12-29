@@ -320,8 +320,24 @@ internal static class PatchGenerator
 
 internal static class VsFileId
 {
+    public static string NormalizeVanillaFileId(string fileId)
+    {
+        var idx = fileId.IndexOf(':');
+        if (idx <= 0) return fileId;
+
+        var domain = fileId[..idx];
+        if (domain.Equals("game", StringComparison.OrdinalIgnoreCase) ||
+            domain.Equals("creative", StringComparison.OrdinalIgnoreCase) ||
+            domain.Equals("survival", StringComparison.OrdinalIgnoreCase))
+        {
+            return "game" + fileId[idx..];
+        }
+
+        return fileId;
+    }
+
     // Infer "modid:relative/path.json" from .../assets/<domain>/...
-    public static bool TryInferFileId(string absolutePath, out string fileId)
+    public static bool TryInferFileId(string absolutePath, out string fileId, bool vanillaFiles = false)
     {
         fileId = "";
         var p = Path.GetFullPath(absolutePath);
@@ -335,6 +351,17 @@ internal static class VsFileId
             if (!parts[i].Equals("assets", StringComparison.OrdinalIgnoreCase)) continue;
 
             var domain = parts[i + 1];
+
+            // Vintage Story vanilla assets can live under multiple folders (e.g. assets/creative, assets/survival)
+            // but are commonly targeted via the unified "game" domain for patching.
+            if (vanillaFiles && (
+                    domain.Equals("game", StringComparison.OrdinalIgnoreCase) ||
+                    domain.Equals("creative", StringComparison.OrdinalIgnoreCase) ||
+                    domain.Equals("survival", StringComparison.OrdinalIgnoreCase)))
+            {
+                domain = "game";
+            }
+
             var rel = string.Join("/", parts.Skip(i + 2));
             fileId = $"{domain}:{rel}";
             return true;
@@ -394,7 +421,8 @@ internal static class FolderPatchGenerator
         string editedRoot,
         string outRoot,
         PatchGeneratorOptions opt,
-        bool autoDepends)
+        bool autoDepends,
+        bool vanillaFiles = false)
     {
         var errors = new List<string>();
 
@@ -481,8 +509,8 @@ internal static class FolderPatchGenerator
             {
                 // FileId inference prefers the edited file path (most common), but falls back.
                 string fileId;
-                if (!VsFileId.TryInferFileId(editedFile, out fileId) &&
-                    !VsFileId.TryInferFileId(sourceFile, out fileId))
+                if (!VsFileId.TryInferFileId(editedFile, out fileId, vanillaFiles) &&
+                    !VsFileId.TryInferFileId(sourceFile, out fileId, vanillaFiles))
                 {
                     // Best-effort fallback so folder mode still works outside an /assets/<domain>/ tree.
                     var relUnix = rel.Replace('\\', '/');

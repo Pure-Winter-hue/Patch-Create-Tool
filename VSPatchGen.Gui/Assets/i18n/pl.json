@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "To będzie pole 'file' w patchu, np. game:path/to/file.json albo yourmod:path/to/file.json.\n\nJeśli „Wywnioskuj ze ścieżki źródłowej” jest włączone, pole zostanie uzupełnione automatycznie na podstawie folderu assets/<domain>/... w ścieżce źródłowej.",
   "InferFileIdLabel": "Wywnioskuj ze ścieżki źródłowej (assets/<domain>/...)",
   "InferFileIdTooltip": "Włączone: plik źródłowy musi znajdować się pod assets/<domain>/... i na tej podstawie budowane jest id pliku patcha.\nWyłączone: możesz wybrać plik źródłowy z dowolnego miejsca, ale musisz sam wpisać id pliku docelowego.",
+  "VanillaFilesLabel": "Pliki vanilla (użyj domeny game)",
+  "VanillaFilesTooltip": "Po włączeniu assets/creative i assets/survival są traktowane jako jedna domena game podczas wnioskowania identyfikatorów plików.",
   "AutoDependsLabel": "Automatycznie dodaj dependsOn",
   "AutoDependsTooltip": "Jeśli włączone, aplikacja doda wpis dependsOn, gdy domena pliku źródłowego różni się od domeny pliku patcha. Dla domeny “game” nic nie jest dodawane.",
   "PreferAddMergeLabel": "Preferuj addmerge",

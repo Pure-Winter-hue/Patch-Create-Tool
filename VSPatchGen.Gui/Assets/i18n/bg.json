@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Това става полето 'file' в пача, напр. game:path/to/file.json или yourmod:path/to/file.json.\n\nАко „Извлечи от пътя на източника“ е включено, полето се попълва автоматично въз основа на папка assets/<domain>/... в пътя на източника.",
   "InferFileIdLabel": "Извлечи от пътя на източника (assets/<domain>/...)",
   "InferFileIdTooltip": "Включено: източниковият файл трябва да е под assets/<domain>/... и това се използва за изграждане на file id за пача.\nИзключено: можете да изберете източников файл от всяко място, но трябва сами да въведете ID на целевия файл.",
+  "VanillaFilesLabel": "Ванилни файлове (използвай домейна game)",
+  "VanillaFilesTooltip": "Ако е включено, assets/creative и assets/survival се третират като единния домейн game при извличане на идентификатори на файлове.",
   "AutoDependsLabel": "Автоматично добави dependsOn",
   "AutoDependsTooltip": "Ако е включено, приложението добавя dependsOn запис, когато домейнът на източниковия файл е различен от домейна на patch файла. За домейна “game” не се добавя нищо.",
   "PreferAddMergeLabel": "Предпочитай addmerge",

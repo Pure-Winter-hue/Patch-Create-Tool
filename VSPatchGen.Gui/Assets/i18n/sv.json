@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Detta blir patchens 'file'-fält, t.ex. game:path/to/file.json eller yourmod:path/to/file.json.\n\nOm “Härled från källsökväg” är aktiverat fylls detta i automatiskt baserat på en assets/<domain>/... mapp i källsökvägen.",
   "InferFileIdLabel": "Härled från källsökväg (assets/<domain>/...)",
   "InferFileIdTooltip": "Aktiverat: källfilen måste ligga under assets/<domain>/... och används för att bygga patchens fil-id.\nInaktiverat: du kan välja källfilen var som helst, men du måste skriva in målfil-id själv.",
+  "VanillaFilesLabel": "Vanilla-filer (använd game-domänen)",
+  "VanillaFilesTooltip": "Om aktiverat behandlas assets/creative och assets/survival som den sammanslagna game-domänen när fil-ID:n härleds.",
   "AutoDependsLabel": "Lägg till dependsOn automatiskt",
   "AutoDependsTooltip": "Om aktiverat lägger appen till en dependsOn-post när källfilens domän skiljer sig från patchfilens domän. För domänen “game” läggs inget till.",
   "PreferAddMergeLabel": "Föredra addmerge",

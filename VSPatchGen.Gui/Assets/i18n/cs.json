@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Toto se stane polem 'file' v patchi, např. game:path/to/file.json nebo yourmod:path/to/file.json.\n\nJe-li zapnuto „Odvodit z cesty zdroje“, vyplní se automaticky podle složky assets/<domain>/... v cestě zdroje.",
   "InferFileIdLabel": "Odvodit z cesty zdroje (assets/<domain>/...)",
   "InferFileIdTooltip": "Zapnuto: zdrojový soubor musí být pod assets/<domain>/... a z toho se sestaví ID souboru patche.\nVypnuto: zdrojový soubor můžete vybrat odkudkoli, ale musíte zadat ID cílového souboru ručně.",
+  "VanillaFilesLabel": "Vanilla soubory (použít doménu game)",
+  "VanillaFilesTooltip": "Pokud je zapnuto, assets/creative a assets/survival se při odvozování ID souboru berou jako sjednocená doména game.",
   "AutoDependsLabel": "Automaticky přidat dependsOn",
   "AutoDependsTooltip": "Je-li zapnuto, aplikace přidá položku dependsOn, když se doména zdrojového souboru liší od domény patch souboru. Pro doménu „game“ se nic nepřidává.",
   "PreferAddMergeLabel": "Preferovat addmerge",

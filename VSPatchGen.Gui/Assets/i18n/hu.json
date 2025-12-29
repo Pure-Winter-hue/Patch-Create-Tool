@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Ez lesz a patch 'file' mezője, pl. game:path/to/file.json vagy yourmod:path/to/file.json.\n\nHa a „Következtetés a forrás útvonalból” be van kapcsolva, automatikusan kitöltődik a forrás útvonalában található assets/<domain>/... mappa alapján.",
   "InferFileIdLabel": "Következtetés a forrás útvonalból (assets/<domain>/...)",
   "InferFileIdTooltip": "Bekapcsolva: a forrásfájlnak assets/<domain>/... alatt kell lennie, és ebből épül fel a patch fájl-id.\nKikapcsolva: a forrásfájlt bárhonnan kiválaszthatod, de a cél fájl-id-t neked kell beírnod.",
+  "VanillaFilesLabel": "Vanilla fájlok (a game domain használata)",
+  "VanillaFilesTooltip": "Bekapcsolva az assets/creative és assets/survival a közös game domainként lesz kezelve a fájlazonosítók kikövetkeztetésekor.",
   "AutoDependsLabel": "dependsOn automatikus hozzáadása",
   "AutoDependsTooltip": "Ha be van kapcsolva, az alkalmazás dependsOn bejegyzést ad hozzá, amikor a forrásfájl domainje eltér a patch fájl domainjétől. A “game” domainhez nem ad hozzá semmit.",
   "PreferAddMergeLabel": "addmerge előnyben",

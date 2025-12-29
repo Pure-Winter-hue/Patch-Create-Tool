@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Acesta devine câmpul 'file' al patch-ului, de ex. game:path/to/file.json sau yourmod:path/to/file.json.\n\nDacă „Deducere din calea sursei” este activată, câmpul se completează automat pe baza unui folder assets/<domain>/... din calea sursei.",
   "InferFileIdLabel": "Deducere din calea sursei (assets/<domain>/...)",
   "InferFileIdTooltip": "Activat: fișierul sursă trebuie să fie sub assets/<domain>/... și este folosit pentru a construi id-ul fișierului patch.\nDezactivat: poți selecta fișierul sursă din orice locație, dar trebuie să introduci manual id-ul fișierului țintă.",
+  "VanillaFilesLabel": "Fișiere vanilla (folosește domeniul game)",
+  "VanillaFilesTooltip": "Dacă este activat, assets/creative și assets/survival sunt tratate ca domeniul game unificat la inferarea ID-urilor de fișier.",
   "AutoDependsLabel": "Adaugă dependsOn automat",
   "AutoDependsTooltip": "Dacă este activat, aplicația adaugă o intrare dependsOn când domeniul fișierului sursă diferă de domeniul fișierului patch. Pentru domeniul “game”, nu se adaugă nimic.",
   "PreferAddMergeLabel": "Preferă addmerge",

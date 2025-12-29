@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Αυτό γίνεται το πεδίο 'file' του patch, π.χ. game:path/to/file.json ή yourmod:path/to/file.json.\n\nΑν είναι ενεργό το «Εξαγωγή από τη διαδρομή πηγής», συμπληρώνεται αυτόματα με βάση έναν φάκελο assets/<domain>/... στη διαδρομή πηγής.",
   "InferFileIdLabel": "Εξαγωγή από τη διαδρομή πηγής (assets/<domain>/...)",
   "InferFileIdTooltip": "Ενεργό: το αρχείο πηγής πρέπει να βρίσκεται κάτω από assets/<domain>/... και αυτό χρησιμοποιείται για να χτιστεί το id του αρχείου patch.\nΑνενεργό: μπορείτε να επιλέξετε το αρχείο πηγής από οπουδήποτε, αλλά πρέπει να πληκτρολογήσετε το ID αρχείου στόχου μόνοι σας.",
+  "VanillaFilesLabel": "Αρχεία vanilla (χρήση του τομέα game)",
+  "VanillaFilesTooltip": "Αν είναι ενεργό, τα assets/creative και assets/survival αντιμετωπίζονται ως ο ενιαίος τομέας game κατά την εξαγωγή αναγνωριστικών αρχείων.",
   "AutoDependsLabel": "Αυτόματη προσθήκη dependsOn",
   "AutoDependsTooltip": "Αν είναι ενεργό, η εφαρμογή προσθέτει μια εγγραφή dependsOn όταν το domain του αρχείου πηγής διαφέρει από το domain του αρχείου patch. Για το domain “game” δεν προστίθεται τίποτα.",
   "PreferAddMergeLabel": "Προτίμηση addmerge",

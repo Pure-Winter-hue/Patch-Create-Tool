@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "這會成為補丁中的 'file' 欄位，例如 game:path/to/file.json 或 yourmod:path/to/file.json。\n\n若啟用「從來源路徑推斷」，會根據來源路徑中的 assets/<domain>/... 資料夾自動填入。",
   "InferFileIdLabel": "從來源路徑推斷 (assets/<domain>/...)",
   "InferFileIdTooltip": "啟用：來源檔必須位於 assets/<domain>/... 之下，並據此建立補丁檔案 id。\n停用：可以從任何位置選擇來源檔，但必須手動輸入目標檔案 id。",
+  "VanillaFilesLabel": "原版檔案（使用 game 網域）",
+  "VanillaFilesTooltip": "啟用後，在推斷檔案 ID 時，會將 assets/creative 與 assets/survival 視為統一的 game 網域。",
   "AutoDependsLabel": "自動加入 dependsOn",
   "AutoDependsTooltip": "啟用後，當來源檔案的 domain 與補丁檔案的 domain 不同時會加入 dependsOn 條目。對於 “game” domain 不會加入任何內容。",
   "PreferAddMergeLabel": "優先 addmerge",

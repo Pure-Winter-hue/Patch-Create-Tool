@@ -69,6 +69,12 @@ public partial class MainWindow : Window
         }
     }
 
+    private void VanillaFilesCheck_Changed(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        // Vanilla mode affects domain inference, so refresh the inferred ID.
+        UpdateFileIdFromSource();
+    }
+
     private void UpdateFileIdFromSource()
     {
         if (IsFolderMode)
@@ -86,7 +92,9 @@ public partial class MainWindow : Window
             return;
         }
 
-        if (VsFileId.TryInferFileId(source, out var fileId))
+        var vanilla = VanillaFilesCheck?.IsChecked == true;
+
+        if (VsFileId.TryInferFileId(source, out var fileId, vanilla))
             FileIdBox.Text = fileId;
         else
             FileIdBox.Text = "";
@@ -180,6 +188,8 @@ public partial class MainWindow : Window
 
             var autoDepends = AutoDependsCheck.IsChecked == true;
 
+            var vanillaFiles = VanillaFilesCheck.IsChecked == true;
+
             if (IsFolderMode)
             {
                 if (string.IsNullOrWhiteSpace(source) || !Directory.Exists(source))
@@ -203,7 +213,8 @@ public partial class MainWindow : Window
                             Side = side,
                             PreferAddMerge = preferAddMerge
                         },
-                        autoDepends);
+                        autoDepends,
+                        vanillaFiles);
                 });
 
                 var errNote = folderResult.Errors.Count > 0
@@ -222,7 +233,7 @@ public partial class MainWindow : Window
                 string fileId;
                 if (InferFileIdCheck.IsChecked == true)
                 {
-                    if (!VsFileId.TryInferFileId(source, out fileId))
+                    if (!VsFileId.TryInferFileId(source, out fileId, vanillaFiles))
                         throw new InvalidOperationException(Localization.T("ErrInferFileId"));
                 }
                 else
@@ -230,6 +241,9 @@ public partial class MainWindow : Window
                     fileId = FileIdBox.Text?.Trim() ?? "";
                     if (string.IsNullOrWhiteSpace(fileId) || VsFileId.GetDomain(fileId) is null)
                         throw new InvalidOperationException(Localization.T("ErrPickValidFileId"));
+
+                    if (vanillaFiles)
+                        fileId = VsFileId.NormalizeVanillaFileId(fileId);
                 }
 
                 List<DependsOnEntry>? dependsOn = null;
@@ -319,6 +333,7 @@ public partial class MainWindow : Window
             mi.Click += (_, _) =>
             {
                 Localization.Load((string)mi.Tag!);
+                UserSettings.SavePreferredLanguage(Localization.CurrentLanguage);
                 // FlowDirection is applied by Localization.Load.
                 RefreshLocalizedComboSelection();
             };

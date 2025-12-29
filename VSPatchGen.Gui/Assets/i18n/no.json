@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Dette blir patchens 'file'-felt, f.eks. game:path/to/file.json eller yourmod:path/to/file.json.\n\nHvis “Utled fra kilde-sti” er aktivert, fylles dette inn automatisk basert på en assets/<domain>/... mappe i kildestien.",
   "InferFileIdLabel": "Utled fra kilde-sti (assets/<domain>/...)",
   "InferFileIdTooltip": "Aktivert: kildefilen må ligge under assets/<domain>/... og brukes til å bygge patchens fil-id.\nDeaktivert: du kan velge kildefilen fra hvor som helst, men du må skrive inn målfil-id selv.",
+  "VanillaFilesLabel": "Vanilla-filer (bruk game-domenet)",
+  "VanillaFilesTooltip": "Hvis aktivert behandles assets/creative og assets/survival som det sammenslåtte game-domenet når fil-ID-er utledes.",
   "AutoDependsLabel": "Legg til dependsOn automatisk",
   "AutoDependsTooltip": "Hvis aktivert legger appen til en dependsOn-oppføring når domenet til kildefilen er forskjellig fra domenet til patchfilen. For domenet “game” legges ingenting til.",
   "PreferAddMergeLabel": "Foretrekk addmerge",

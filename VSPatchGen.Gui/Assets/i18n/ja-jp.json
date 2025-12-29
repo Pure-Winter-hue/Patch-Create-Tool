@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "パッチの 'file' フィールドになります（例: game:path/to/file.json / yourmod:path/to/file.json）。\n\n「ソースパスから推測」が有効な場合、ソースパス内の assets/<domain>/... フォルダを基に自動入力されます。",
   "InferFileIdLabel": "ソースパスから推測 (assets/<domain>/...)",
   "InferFileIdTooltip": "有効: ソースファイルは assets/<domain>/... 配下にある必要があり、それを使ってパッチのファイルIDを作成します。\n無効: ソースファイルはどこからでも選べますが、対象ファイルIDを自分で入力する必要があります。",
+  "VanillaFilesLabel": "バニラファイル（game ドメインを使用）",
+  "VanillaFilesTooltip": "有効にすると、ファイルID推測時に assets/creative と assets/survival を統合された game ドメインとして扱います。",
   "AutoDependsLabel": "dependsOn を自動追加",
   "AutoDependsTooltip": "有効な場合、ソースファイルの domain がパッチファイルの domain と異なるとき dependsOn を追加します。domain が “game” の場合は追加されません。",
   "PreferAddMergeLabel": "addmerge を優先",

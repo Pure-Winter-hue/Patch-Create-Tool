@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Dit wordt het patchveld 'file', zoals game:path/to/file.json of yourmod:path/to/file.json.\n\nAls “Afleiden uit bronpad” is ingeschakeld, wordt dit automatisch ingevuld op basis van een map assets/<domain>/... in het bronpad.",
   "InferFileIdLabel": "Afleiden uit bronpad (assets/<domain>/...)",
   "InferFileIdTooltip": "Ingeschakeld: het bronbestand moet onder assets/<domain>/... staan en dat wordt gebruikt om de patch-bestand-id te bouwen.\nUitgeschakeld: je kunt het bronbestand overal kiezen, maar je moet zelf de doelbestand-id invullen.",
+  "VanillaFilesLabel": "Vanilla-bestanden (game-domein gebruiken)",
+  "VanillaFilesTooltip": "Indien ingeschakeld worden assets/creative en assets/survival bij het afleiden van bestands-ID's behandeld als het samengevoegde game-domein.",
   "AutoDependsLabel": "dependsOn automatisch toevoegen",
   "AutoDependsTooltip": "Indien ingeschakeld voegt de app een dependsOn-item toe wanneer het domein van het bronbestand verschilt van het domein van het patchbestand. Voor het “game”-domein wordt niets toegevoegd.",
   "PreferAddMergeLabel": "addmerge verkiezen",

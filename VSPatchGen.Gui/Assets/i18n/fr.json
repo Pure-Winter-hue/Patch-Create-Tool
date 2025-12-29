@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Devient le champ 'file' du patch, par ex. game:path/to/file.json ou yourmod:path/to/file.json.\n\nSi « Déduire depuis le chemin source » est activé, ce champ est rempli automatiquement à partir d’un dossier assets/<domain>/... dans le chemin source.",
   "InferFileIdLabel": "Déduire depuis le chemin source (assets/<domain>/...)",
   "InferFileIdTooltip": "Activé : le fichier source doit se trouver sous assets/<domain>/... et sert à construire l’ID du fichier du patch.\nDésactivé : vous pouvez choisir le fichier source n’importe où, mais vous devez saisir l’ID du fichier cible vous-même.",
+  "VanillaFilesLabel": "Fichiers vanilla (utiliser le domaine game)",
+  "VanillaFilesTooltip": "Si activé, assets/creative et assets/survival sont traités comme le domaine game unifié lors de l’inférence des identifiants de fichier.",
   "AutoDependsLabel": "Ajouter dependsOn automatiquement",
   "AutoDependsTooltip": "Si activé, l’app ajoute une entrée dependsOn lorsque le domaine du fichier source diffère du domaine du fichier patch. Pour le domaine « game », rien n’est ajouté.",
   "PreferAddMergeLabel": "Préférer addmerge",

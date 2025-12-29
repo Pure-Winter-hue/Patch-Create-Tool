@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Tästä tulee patchin 'file'-kenttä, esim. game:path/to/file.json tai yourmod:path/to/file.json.\n\nJos “Päättele lähdepolusta” on käytössä, tämä täytetään automaattisesti lähdepolun assets/<domain>/... -kansion perusteella.",
   "InferFileIdLabel": "Päättele lähdepolusta (assets/<domain>/...)",
   "InferFileIdTooltip": "Käytössä: lähdetiedoston täytyy sijaita assets/<domain>/... -polun alla ja sitä käytetään patchin tiedosto-id:n rakentamiseen.\nPois käytöstä: voit valita lähdetiedoston mistä tahansa, mutta sinun täytyy kirjoittaa kohdetiedoston id itse.",
+  "VanillaFilesLabel": "Vanilla-tiedostot (käytä game-toimialuetta)",
+  "VanillaFilesTooltip": "Kun käytössä, assets/creative ja assets/survival käsitellään yhtenäisenä game-toimialueena tiedosto-ID:itä pääteltäessä.",
   "AutoDependsLabel": "Lisää dependsOn automaattisesti",
   "AutoDependsTooltip": "Jos käytössä, sovellus lisää dependsOn-merkinnän, kun lähdetiedoston domain poikkeaa patch-tiedoston domainista. “game”-domainille ei lisätä mitään.",
   "PreferAddMergeLabel": "Suosi addmerge",

@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Esto se convierte en el campo 'file' del parche, por ejemplo game:path/to/file.json o yourmod:path/to/file.json.\n\nSi “Inferir desde la ruta de origen” está activado, se rellena automáticamente basándose en una carpeta assets/<domain>/... dentro de la ruta de origen.",
   "InferFileIdLabel": "Inferir desde la ruta de origen (assets/<domain>/...)",
   "InferFileIdTooltip": "Activado: la app exige que el archivo de origen esté bajo assets/<domain>/... y usa eso para construir el id del archivo del parche.\nDesactivado: puedes elegir el archivo de origen desde cualquier ubicación, pero debes escribir tú mismo el id del archivo destino.",
+  "VanillaFilesLabel": "Archivos vanilla (usar el dominio game)",
+  "VanillaFilesTooltip": "Si está activado, assets/creative y assets/survival se tratan como el dominio unificado game al inferir IDs de archivo.",
   "AutoDependsLabel": "Añadir dependsOn automáticamente",
   "AutoDependsTooltip": "Si está activado, la app añade una entrada dependsOn cuando el dominio del archivo de origen difiere del dominio del archivo del parche. Para el dominio “game” no se añade nada.",
   "PreferAddMergeLabel": "Preferir addmerge",

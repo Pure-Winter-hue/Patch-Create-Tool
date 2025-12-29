@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Bu, yamadaki 'file' alanı olur; örn. game:path/to/file.json veya yourmod:path/to/file.json.\n\n“Kaynak yoldan çıkar” etkinse, bu alan kaynak yolundaki assets/<domain>/... klasörüne göre otomatik doldurulur.",
   "InferFileIdLabel": "Kaynak yoldan çıkar (assets/<domain>/...)",
   "InferFileIdTooltip": "Etkin: kaynak dosya assets/<domain>/... altında olmalıdır ve buradan yama dosya id'si oluşturulur.\nDevre dışı: kaynak dosyayı herhangi bir yerden seçebilirsiniz, ancak hedef dosya id'sini kendiniz yazmalısınız.",
+  "VanillaFilesLabel": "Vanilla dosyaları (game alan adını kullan)",
+  "VanillaFilesTooltip": "Etkinleştirilirse, dosya kimlikleri çıkarılırken assets/creative ve assets/survival birleşik game alanı olarak ele alınır.",
   "AutoDependsLabel": "dependsOn otomatik ekle",
   "AutoDependsTooltip": "Etkinse, kaynak dosyanın domain'i yama dosyasının domain'inden farklı olduğunda uygulama bir dependsOn girişi ekler. “game” domain'i için hiçbir şey eklenmez.",
   "PreferAddMergeLabel": "addmerge tercih et",

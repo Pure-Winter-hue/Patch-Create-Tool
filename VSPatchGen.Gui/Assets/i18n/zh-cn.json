@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "这会成为补丁中的 'file' 字段，例如 game:path/to/file.json 或 yourmod:path/to/file.json。\n\n若启用“从源路径推断”，会根据源路径中的 assets/<domain>/... 文件夹自动填写。",
   "InferFileIdLabel": "从源路径推断 (assets/<domain>/...)",
   "InferFileIdTooltip": "启用：源文件必须位于 assets/<domain>/... 下，并据此构建补丁文件 id。\n禁用：可以从任意位置选择源文件，但必须手动输入目标文件 id。",
+  "VanillaFilesLabel": "原版文件（使用 game 域）",
+  "VanillaFilesTooltip": "启用后，在推断文件 ID 时，会将 assets/creative 和 assets/survival 视为统一的 game 域。",
   "AutoDependsLabel": "自动添加 dependsOn",
   "AutoDependsTooltip": "启用后，当源文件的 domain 与补丁文件的 domain 不同时会添加 dependsOn 条目。对于 “game” domain 不会添加任何内容。",
   "PreferAddMergeLabel": "优先 addmerge",

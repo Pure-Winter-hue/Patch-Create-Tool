@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Isso vira o campo 'file' do patch, por exemplo game:path/to/file.json ou yourmod:path/to/file.json.\n\nSe “Inferir pelo caminho de origem” estiver ativado, isso é preenchido automaticamente com base em uma pasta assets/<domain>/... no caminho de origem.",
   "InferFileIdLabel": "Inferir pelo caminho de origem (assets/<domain>/...)",
   "InferFileIdTooltip": "Ativado: o app exige que o arquivo de origem esteja sob assets/<domain>/... e usa isso para montar o id do arquivo do patch.\nDesativado: você pode escolher o arquivo de origem de qualquer lugar, mas precisa digitar o id do arquivo alvo.",
+  "VanillaFilesLabel": "Arquivos vanilla (usar domínio game)",
+  "VanillaFilesTooltip": "Se ativado, assets/creative e assets/survival são tratados como o domínio game unificado ao inferir IDs de arquivo.",
   "AutoDependsLabel": "Adicionar dependsOn automaticamente",
   "AutoDependsTooltip": "Se ativado, o app adiciona uma entrada dependsOn quando o domínio do arquivo de origem é diferente do domínio do arquivo do patch. Para o domínio “game”, nada é adicionado.",
   "PreferAddMergeLabel": "Preferir addmerge",

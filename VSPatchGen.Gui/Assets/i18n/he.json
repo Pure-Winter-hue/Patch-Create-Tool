@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "זה יהפוך לשדה 'file' בפאץ׳, למשל game:path/to/file.json או yourmod:path/to/file.json.\n\nאם “הסק מנתיב המקור” מופעל, השדה ימולא אוטומטית לפי תיקיית assets/<domain>/... בנתיב המקור.",
   "InferFileIdLabel": "הסק מנתיב המקור (assets/<domain>/...)",
   "InferFileIdTooltip": "מופעל: קובץ המקור חייב להיות תחת assets/<domain>/... ומשם נבנה מזהה הקובץ של הפאץ׳.\nמכובה: אפשר לבחור קובץ מקור מכל מקום, אבל חייבים להקליד ידנית את מזהה קובץ היעד.",
+  "VanillaFilesLabel": "קבצי ונילה (השתמש בדומיין game)",
+  "VanillaFilesTooltip": "כאשר מופעל, assets/creative ו‑assets/survival נחשבים לדומיין game המאוחד בעת הסקת מזהי קבצים.",
   "AutoDependsLabel": "הוסף dependsOn אוטומטית",
   "AutoDependsTooltip": "אם מופעל, האפליקציה תוסיף רשומת dependsOn כאשר ה‑domain של קובץ המקור שונה מה‑domain של קובץ הפאץ׳. עבור ה‑domain “game” לא מתווסף דבר.",
   "PreferAddMergeLabel": "העדף addmerge",

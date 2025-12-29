@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Це стане полем 'file' у патчі, наприклад game:path/to/file.json або yourmod:path/to/file.json.\n\nЯкщо ввімкнено «Виводити з шляху джерела», поле заповнюється автоматично на основі папки assets/<domain>/... у шляху джерела.",
   "InferFileIdLabel": "Виводити з шляху джерела (assets/<domain>/...)",
   "InferFileIdTooltip": "Увімкнено: вихідний файл має бути під assets/<domain>/..., і це використовується для побудови ID файла патча.\nВимкнено: ви можете вибрати вихідний файл будь-де, але повинні вручну ввести ID цільового файла.",
+  "VanillaFilesLabel": "Ванільні файли (використовувати домен game)",
+  "VanillaFilesTooltip": "Якщо ввімкнено, assets/creative та assets/survival під час виведення ID файлів розглядаються як єдиний домен game.",
   "AutoDependsLabel": "Авто-додавання dependsOn",
   "AutoDependsTooltip": "Якщо ввімкнено, застосунок додасть запис dependsOn, коли домен вихідного файла відрізняється від домену файла патча. Для домену «game» нічого не додається.",
   "PreferAddMergeLabel": "Надавати перевагу addmerge",

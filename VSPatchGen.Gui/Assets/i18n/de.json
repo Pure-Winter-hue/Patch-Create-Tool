@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Dies wird zum Patch-Feld 'file', z.B. game:path/to/file.json oder yourmod:path/to/file.json.\n\nWenn „Aus Quellpfad ableiten“ aktiviert ist, wird dies automatisch anhand eines assets/<domain>/... Ordners im Quellpfad ausgefüllt.",
   "InferFileIdLabel": "Aus Quellpfad ableiten (assets/<domain>/...)",
   "InferFileIdTooltip": "Aktiviert: Die Quelldatei muss unter assets/<domain>/... liegen; daraus wird die Patch-Datei-ID gebaut.\nDeaktiviert: Du kannst die Quelldatei von überall wählen, musst aber die Ziel-Datei-ID selbst eingeben.",
+  "VanillaFilesLabel": "Vanilla-Dateien (game-Domain verwenden)",
+  "VanillaFilesTooltip": "Wenn aktiviert, werden assets/creative und assets/survival beim Ableiten von Datei-IDs als einheitliche game-Domain behandelt.",
   "AutoDependsLabel": "dependsOn automatisch hinzufügen",
   "AutoDependsTooltip": "Wenn aktiviert, fügt die App einen dependsOn-Eintrag hinzu, wenn sich die Domain der Quelldatei von der Patch-Datei-Domain unterscheidet. Für die Domain „game“ wird nichts hinzugefügt.",
   "PreferAddMergeLabel": "addmerge bevorzugen",

@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "패치의 'file' 필드가 됩니다(예: game:path/to/file.json 또는 yourmod:path/to/file.json).\n\n“소스 경로에서 추론”이 켜져 있으면, 소스 경로의 assets/<domain>/... 폴더를 기반으로 자동으로 채워집니다.",
   "InferFileIdLabel": "소스 경로에서 추론 (assets/<domain>/...)",
   "InferFileIdTooltip": "켬: 소스 파일은 assets/<domain>/... 아래에 있어야 하며, 이를 사용해 패치 파일 id를 만듭니다.\n끔: 소스 파일은 어디서든 선택할 수 있지만, 대상 파일 id를 직접 입력해야 합니다.",
+  "VanillaFilesLabel": "바닐라 파일 (game 도메인 사용)",
+  "VanillaFilesTooltip": "활성화하면 파일 ID를 추론할 때 assets/creative 및 assets/survival을 통합된 game 도메인으로 처리합니다.",
   "AutoDependsLabel": "dependsOn 자동 추가",
   "AutoDependsTooltip": "켜져 있으면 소스 파일의 domain이 패치 파일 domain과 다를 때 dependsOn 항목을 추가합니다. domain이 “game”이면 아무 것도 추가하지 않습니다.",
   "PreferAddMergeLabel": "addmerge 우선",

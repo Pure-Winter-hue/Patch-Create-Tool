@@ -27,6 +27,8 @@
   "TargetFileIdTooltip": "Dette bliver patchens 'file'-felt, fx game:path/to/file.json eller yourmod:path/to/file.json.\n\nHvis “Udled fra kildesti” er aktiveret, udfyldes dette automatisk baseret på en assets/<domain>/... mappe i kildestien.",
   "InferFileIdLabel": "Udled fra kildesti (assets/<domain>/...)",
   "InferFileIdTooltip": "Aktiveret: kildefilen skal ligge under assets/<domain>/... og bruges til at bygge patchens fil-id.\nDeaktiveret: du kan vælge kildefilen hvor som helst, men du skal selv skrive målfil-id'et.",
+  "VanillaFilesLabel": "Vanilla-filer (brug game-domænet)",
+  "VanillaFilesTooltip": "Hvis aktiveret, behandles assets/creative og assets/survival som det samlede game-domæne ved udledning af fil-id'er.",
   "AutoDependsLabel": "Tilføj dependsOn automatisk",
   "AutoDependsTooltip": "Hvis aktiveret tilføjer appen en dependsOn-post, når kildefilens domæne er forskelligt fra patchfilens domæne. For domænet “game” tilføjes intet.",
   "PreferAddMergeLabel": "Foretræk addmerge",
